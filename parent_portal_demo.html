@@ -1,0 +1,101 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>พอร์ทัลผู้ปกครอง (ตัวอย่าง) · BrightStar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--berry:#B91D3A;--gold:#C9A961;--ink:#1A1410;--paper:#FBF6EC;--cream:#FFF8E1;--grey:#6B6057;--line:#EADFCB;--green:#2E7D32;--red:#C62828}
+*{box-sizing:border-box}body{margin:0;font-family:"Sarabun",sans-serif;color:var(--ink);background:#f4eee2;line-height:1.5}
+.demo-bar{background:#1A1410;color:#ffe9b0;text-align:center;font-size:12px;padding:6px}
+.shell{max-width:760px;margin:0 auto;padding:18px 16px 50px}
+.brand{text-align:center;margin:14px 0}.brand .k{letter-spacing:4px;color:var(--gold);font-size:11px;font-weight:700}
+.brand h1{font-family:"Cormorant Garamond",serif;color:var(--berry);font-size:30px;margin:4px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 8px 24px rgba(120,80,20,.08)}
+.login h2{margin:0 0 4px;font-size:20px}.login p{color:var(--grey);font-size:14px;margin:0 0 16px}
+label{font-size:13px;color:var(--grey)}
+select,button{font-family:inherit;font-size:15px}
+select{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;margin:6px 0 14px}
+.btn{display:block;width:100%;padding:12px;border:0;border-radius:10px;background:var(--berry);color:#fff;font-weight:700;cursor:pointer}
+.btn.g{background:#fff;color:#444;border:1px solid var(--line);margin-bottom:10px}
+.hidden{display:none}
+.top{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#b91d3a,#d8364f);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700}
+.top .name{font-weight:700}.top small{color:var(--grey)}
+.lvl{display:inline-block;background:var(--cream);border:1px solid var(--gold);color:var(--berry);border-radius:30px;padding:4px 14px;font-weight:700;margin:6px 0}
+.bars{margin:14px 0}
+.bar{display:flex;align-items:center;gap:10px;margin:7px 0}.bar .lab{width:96px;font-size:13.5px}
+.track{flex:1;background:#eee;border-radius:8px;height:18px;overflow:hidden}.fill{height:100%;border-radius:8px;background:linear-gradient(90deg,#c9a961,#b91d3a)}
+.bar .v{width:54px;text-align:right;font-weight:700;font-size:13.5px}
+.tags{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+.tag{border-radius:10px;padding:8px 12px;font-size:13px}.tag.s{background:#e9f6ec;border:1px solid #bfe3c8}.tag.d{background:#fdecec;border:1px solid #f1c2c2}
+.row{display:flex;gap:10px;margin-top:14px}.row .btn{flex:1}
+.cert{border:8px double var(--gold);border-radius:12px;padding:26px;text-align:center;background:linear-gradient(180deg,#fffdf6,#fff)}
+.cert .ttl{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--berry);font-size:26px}
+.cert .nm{font-size:24px;font-weight:700;border-bottom:2px solid var(--gold);display:inline-block;padding:4px 30px;margin:10px 0}
+.stars{color:var(--gold);font-size:26px;letter-spacing:4px}
+.muted{color:var(--grey);font-size:12px}
+a.back{color:var(--berry);font-size:13px;cursor:pointer;text-decoration:underline}
+</style></head><body>
+<div class="demo-bar">ตัวอย่าง (PROTOTYPE) — หน้าตาพอร์ทัลผู้ปกครอง · ข้อมูลสมมุติ · ระบบ Login จริงทำใน AppSheet (เซ็นอินด้วย Google)</div>
+<div class="shell">
+ <div class="brand"><div class="k">BRIGHTSTAR ASSESSMENT INSTITUTE</div><h1>พอร์ทัลผู้ปกครอง</h1></div>
+
+ <div id="login" class="card login">
+   <h2>เข้าสู่ระบบ</h2><p>ผู้ปกครองเซ็นอินเพื่อดูผลและเกียรติบัตรของบุตรหลาน</p>
+   <button class="btn g" onclick="alert('ในระบบจริง: เซ็นอินด้วยบัญชี Google ของผู้ปกครอง — AppSheet จะแสดงเฉพาะข้อมูลลูกของท่าน')">🔵 เซ็นอินด้วย Google</button>
+   <label>ตัวอย่างสาธิต — เลือกบุตรหลาน</label>
+   <select id="pick">
+     <option value="0">ด.ญ. กานต์ธิดา (ใบเฟิร์น) — อนุบาล 3</option>
+     <option value="1">ด.ช. ภูริภัทร (ภูมิ) — อนุบาล 3</option>
+   </select>
+   <button class="btn" onclick="enter()">เข้าดูผล</button>
+ </div>
+
+ <div id="report" class="card hidden">
+   <div class="top"><div class="avatar" id="ava">ก</div><div style="flex:1"><div class="name" id="cname"></div><small id="cclass"></small></div><a class="back" onclick="logout()">ออก</a></div>
+   <div>ผลการประเมิน เทอม 1/2569 · <span class="lvl" id="lvl"></span></div>
+   <div class="bars" id="bars"></div>
+   <div class="tags"><div class="tag s">จุดแข็ง: <b id="strong"></b></div><div class="tag d">ด้านที่ควรส่งเสริม: <b id="weak"></b></div></div>
+   <div class="muted" id="avgline"></div>
+   <div class="row"><button class="btn" onclick="showCert()">🏅 ดูเกียรติบัตร</button></div>
+ </div>
+
+ <div id="certv" class="card hidden">
+   <div class="cert">
+     <div class="muted">BRIGHTSTAR ASSESSMENT INSTITUTE</div>
+     <div class="ttl">Certificate of Achievement</div>
+     <div class="muted">ขอมอบเกียรติบัตรนี้เพื่อแสดงว่า</div>
+     <div class="nm" id="certname"></div>
+     <div class="stars" id="certstars"></div>
+     <div id="certlvl" style="font-weight:700;color:var(--berry)"></div>
+     <div class="muted" id="certscore"></div>
+     <div class="muted" style="margin-top:14px">ลงนาม ผู้อำนวยการ · ผู้ประเมิน</div>
+   </div>
+   <div class="row"><button class="btn g" onclick="back2report()">← กลับ</button><button class="btn" onclick="window.print()">พิมพ์ / บันทึก PDF</button></div>
+ </div>
+</div>
+<script>
+const kids=[
+ {name:"ด.ญ. กานต์ธิดา ศรีสุข",nick:"ใบเฟิร์น",cls:"อนุบาล 3",init:"ก",s:{ภาษาไทย:85,อังกฤษ:78,คณิต:92,"EF/IQ":88,กล้ามเนื้อ:75}},
+ {name:"ด.ช. ภูริภัทร ตั้งใจ",nick:"ภูมิ",cls:"อนุบาล 3",init:"ภ",s:{ภาษาไทย:45,อังกฤษ:40,คณิต:48,"EF/IQ":42,กล้ามเนื้อ:55}}
+];
+const W={ภาษาไทย:20,อังกฤษ:20,คณิต:25,"EF/IQ":20,กล้ามเนื้อ:15};
+const LV=[[0,34,"ดาวน้อย",1],[35,49,"ดาวสุกใส",2],[50,64,"ดาวรุ่ง",3],[65,79,"ดาวเปล่งแสง",4],[80,89,"ดาวเจิดจ้า",5],[90,95,"ดาวแชมเปี้ยน",6],[96,100,"ดาวมาสเตอร์",7]];
+let cur=0;
+function wavg(s){let n=0,d=0;for(k in s){n+=s[k]*W[k];d+=W[k];}return Math.round(n/d*10)/10;}
+function lvl(a){for(const r of LV)if(a>=r[0]&&a<=r[1])return r;return LV[0];}
+function enter(){cur=+document.getElementById('pick').value;render();show('report');}
+function render(){const k=kids[cur];document.getElementById('cname').textContent=k.name+" ("+k.nick+")";
+ document.getElementById('cclass').textContent=k.cls;document.getElementById('ava').textContent=k.init;
+ const a=wavg(k.s),L=lvl(a);document.getElementById('lvl').textContent="ระดับ "+["","I","II","III","IV","V","VI","VII"][L[3]]+" · "+L[2];
+ let bars="";const ent=Object.entries(k.s);for(const[d,v]of ent){bars+=`<div class="bar"><div class="lab">${d}</div><div class="track"><div class="fill" style="width:${v}%"></div></div><div class="v">${v}</div></div>`;}
+ document.getElementById('bars').innerHTML=bars;
+ const mx=ent.reduce((a,b)=>b[1]>a[1]?b:a),mn=ent.reduce((a,b)=>b[1]<a[1]?b:a);
+ document.getElementById('strong').textContent=mx[0];document.getElementById('weak').textContent=mn[0];
+ document.getElementById('avgline').textContent="คะแนนเฉลี่ยถ่วงน้ำหนัก "+a+" / 100";}
+function showCert(){const k=kids[cur],a=wavg(k.s),L=lvl(a);
+ document.getElementById('certname').textContent=k.name;
+ document.getElementById('certstars').textContent="★".repeat(L[3])+"☆".repeat(7-L[3]);
+ document.getElementById('certlvl').textContent="ระดับ "+L[2];
+ document.getElementById('certscore').textContent="คะแนนเฉลี่ย "+a+" / 100 · เทอม 1/2569";show('certv');}
+function back2report(){show('report');}function logout(){show('login');}
+function show(id){for(const x of['login','report','certv'])document.getElementById(x).classList.add('hidden');document.getElementById(id).classList.remove('hidden');}
+</script></body></html>
