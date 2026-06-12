@@ -1,101 +1,146 @@
 <!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>พอร์ทัลผู้ปกครอง (ตัวอย่าง) · BrightStar</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--berry:#B91D3A;--gold:#C9A961;--ink:#1A1410;--paper:#FBF6EC;--cream:#FFF8E1;--grey:#6B6057;--line:#EADFCB;--green:#2E7D32;--red:#C62828}
-*{box-sizing:border-box}body{margin:0;font-family:"Sarabun",sans-serif;color:var(--ink);background:#f4eee2;line-height:1.5}
-.demo-bar{background:#1A1410;color:#ffe9b0;text-align:center;font-size:12px;padding:6px}
-.shell{max-width:760px;margin:0 auto;padding:18px 16px 50px}
-.brand{text-align:center;margin:14px 0}.brand .k{letter-spacing:4px;color:var(--gold);font-size:11px;font-weight:700}
-.brand h1{font-family:"Cormorant Garamond",serif;color:var(--berry);font-size:30px;margin:4px 0}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 8px 24px rgba(120,80,20,.08)}
-.login h2{margin:0 0 4px;font-size:20px}.login p{color:var(--grey);font-size:14px;margin:0 0 16px}
-label{font-size:13px;color:var(--grey)}
-select,button{font-family:inherit;font-size:15px}
-select{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;margin:6px 0 14px}
-.btn{display:block;width:100%;padding:12px;border:0;border-radius:10px;background:var(--berry);color:#fff;font-weight:700;cursor:pointer}
-.btn.g{background:#fff;color:#444;border:1px solid var(--line);margin-bottom:10px}
+*{box-sizing:border-box}body{margin:0;font-family:"Sarabun",sans-serif;color:var(--ink);background:#f2ecdf;line-height:1.55}
+.demo-bar{background:#1A1410;color:#ffe9b0;text-align:center;font-size:12px;padding:7px 12px}
+.shell{max-width:840px;margin:0 auto;padding:18px 16px 60px}
+.brand{text-align:center;margin:14px 0 10px}.brand .k{letter-spacing:4px;color:var(--gold);font-size:11px;font-weight:700}
+.brand h1{font-family:"Cormorant Garamond",serif;color:var(--berry);font-size:32px;margin:4px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 10px 30px rgba(120,80,20,.08)}
 .hidden{display:none}
-.top{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
-.avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#b91d3a,#d8364f);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700}
-.top .name{font-weight:700}.top small{color:var(--grey)}
-.lvl{display:inline-block;background:var(--cream);border:1px solid var(--gold);color:var(--berry);border-radius:30px;padding:4px 14px;font-weight:700;margin:6px 0}
-.bars{margin:14px 0}
-.bar{display:flex;align-items:center;gap:10px;margin:7px 0}.bar .lab{width:96px;font-size:13.5px}
-.track{flex:1;background:#eee;border-radius:8px;height:18px;overflow:hidden}.fill{height:100%;border-radius:8px;background:linear-gradient(90deg,#c9a961,#b91d3a)}
-.bar .v{width:54px;text-align:right;font-weight:700;font-size:13.5px}
+/* login */
+.login{max-width:420px;margin:0 auto}
+.login h2{margin:0 0 2px;font-size:21px}.login p{color:var(--grey);font-size:13.5px;margin:0 0 16px}
+label{font-size:13px;color:var(--grey);display:block;margin-top:10px}
+input{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;margin-top:5px;font-size:15px;font-family:inherit}
+.btn{display:block;width:100%;padding:12px;border:0;border-radius:10px;background:var(--berry);color:#fff;font-weight:700;cursor:pointer;font-size:15px;margin-top:16px}
+.btn.alt{background:#fff;color:var(--berry);border:1px solid var(--gold)}
+.hint{background:var(--cream);border:1px dashed var(--gold);border-radius:10px;padding:10px;font-size:12.5px;color:var(--grey);margin-top:14px}
+.err{color:var(--red);font-size:13px;margin-top:10px;min-height:18px}
+/* report */
+.top{display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--gold);padding-bottom:14px;margin-bottom:8px}
+.avatar{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#b91d3a,#d8364f);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700}
+.top .nm{font-weight:700;font-size:18px}.top small{color:var(--grey)}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--grey);margin:10px 0}
+.lvlrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:10px 0}
+.lvl{background:var(--cream);border:1px solid var(--gold);color:var(--berry);border-radius:30px;padding:6px 16px;font-weight:700}
+.avg{font-size:14px;color:var(--grey)}.avg b{color:var(--berry);font-size:20px}
+.split{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:6px 0 4px}
+.radar{flex:0 0 270px}
+.bars{flex:1;min-width:260px}
+.bar{display:flex;align-items:center;gap:10px;margin:8px 0}.bar .lab{width:120px;font-size:13px}
+.track{flex:1;background:#eee;border-radius:8px;height:16px;overflow:hidden}.fill{height:100%;border-radius:8px}
+.bar .v{width:42px;text-align:right;font-weight:700;font-size:13px}
+.sec{font-family:"Cormorant Garamond",serif;color:var(--berry);font-size:22px;margin:20px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.det{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:8px 0}
+.det .dh{display:flex;justify-content:space-between;font-weight:700}.det .dh .sc{color:var(--berry)}
+.det .dx{font-size:13px;color:var(--grey);margin-top:4px}
+.cefr{display:inline-block;background:#eef3ff;border:1px solid #c5d4f5;color:#3457b2;border-radius:8px;padding:2px 8px;font-size:12px;margin-top:6px}
 .tags{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
-.tag{border-radius:10px;padding:8px 12px;font-size:13px}.tag.s{background:#e9f6ec;border:1px solid #bfe3c8}.tag.d{background:#fdecec;border:1px solid #f1c2c2}
-.row{display:flex;gap:10px;margin-top:14px}.row .btn{flex:1}
-.cert{border:8px double var(--gold);border-radius:12px;padding:26px;text-align:center;background:linear-gradient(180deg,#fffdf6,#fff)}
-.cert .ttl{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--berry);font-size:26px}
-.cert .nm{font-size:24px;font-weight:700;border-bottom:2px solid var(--gold);display:inline-block;padding:4px 30px;margin:10px 0}
-.stars{color:var(--gold);font-size:26px;letter-spacing:4px}
+.tag{border-radius:10px;padding:10px 12px;font-size:13px;flex:1;min-width:220px}.tag.s{background:#e9f6ec;border:1px solid #bfe3c8}.tag.d{background:#fdecec;border:1px solid #f1c2c2}
+.tag b{display:block;margin-bottom:2px}
+.row{display:flex;gap:10px;margin-top:16px}.row .btn{flex:1;margin-top:0}
+.sign{display:flex;gap:20px;margin-top:18px;font-size:12px;color:var(--grey)}.sign div{flex:1;text-align:center;border-top:1px solid var(--ink);padding-top:6px}
+a.back{margin-left:auto;color:var(--berry);font-size:13px;cursor:pointer;text-decoration:underline}
+/* certificate */
+.certwrap{background:#fff;border-radius:14px;padding:10px}
+.cert{border:7px solid var(--gold);border-radius:6px;padding:4px}
+.cert-in{border:2px solid var(--berry);border-radius:4px;padding:26px 24px;text-align:center;position:relative;background:linear-gradient(180deg,#fffdf6,#fff)}
+.cert .inst{letter-spacing:3px;color:var(--gold);font-size:12px;font-weight:700}
+.cert .ttl{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--berry);font-size:32px;margin:6px 0}
+.cert .sm{color:var(--grey);font-size:13px}
+.cert .nm{font-size:28px;font-weight:700;border-bottom:2px solid var(--gold);display:inline-block;padding:6px 36px;margin:12px 0}
+.cert .stars{color:var(--gold);font-size:30px;letter-spacing:6px;margin:6px 0}
+.cert .lv{font-weight:700;color:var(--berry);font-size:18px}
+.seal{width:78px;height:78px;border-radius:50%;border:3px solid var(--gold);color:var(--berry);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;margin:14px auto 0;text-align:center;line-height:1.1}
+.csign{display:flex;gap:30px;justify-content:center;margin-top:16px;font-size:12px;color:var(--grey)}.csign div{border-top:1px solid var(--ink);padding-top:6px;width:160px}
 .muted{color:var(--grey);font-size:12px}
-a.back{color:var(--berry);font-size:13px;cursor:pointer;text-decoration:underline}
+@media print{.demo-bar,.row,.back{display:none}.card{box-shadow:none;border:0}body{background:#fff}}
 </style></head><body>
-<div class="demo-bar">ตัวอย่าง (PROTOTYPE) — หน้าตาพอร์ทัลผู้ปกครอง · ข้อมูลสมมุติ · ระบบ Login จริงทำใน AppSheet (เซ็นอินด้วย Google)</div>
+<div class="demo-bar">ตัวอย่าง (PROTOTYPE) · การล็อกอิน user/password นี้เป็นการสาธิตหน้าตา (ตรวจฝั่งเว็บ) ไม่ปลอดภัยสำหรับข้อมูลจริง — ระบบจริงต้องมี backend หรือใช้ AppSheet เซ็นอินอีเมล</div>
 <div class="shell">
  <div class="brand"><div class="k">BRIGHTSTAR ASSESSMENT INSTITUTE</div><h1>พอร์ทัลผู้ปกครอง</h1></div>
 
  <div id="login" class="card login">
-   <h2>เข้าสู่ระบบ</h2><p>ผู้ปกครองเซ็นอินเพื่อดูผลและเกียรติบัตรของบุตรหลาน</p>
-   <button class="btn g" onclick="alert('ในระบบจริง: เซ็นอินด้วยบัญชี Google ของผู้ปกครอง — AppSheet จะแสดงเฉพาะข้อมูลลูกของท่าน')">🔵 เซ็นอินด้วย Google</button>
-   <label>ตัวอย่างสาธิต — เลือกบุตรหลาน</label>
-   <select id="pick">
-     <option value="0">ด.ญ. กานต์ธิดา (ใบเฟิร์น) — อนุบาล 3</option>
-     <option value="1">ด.ช. ภูริภัทร (ภูมิ) — อนุบาล 3</option>
-   </select>
-   <button class="btn" onclick="enter()">เข้าดูผล</button>
+   <h2>เข้าสู่ระบบ</h2><p>กรอกชื่อผู้ใช้และรหัสผ่านที่ศูนย์มอบให้ เพื่อดูผลและเกียรติบัตรของบุตรหลาน</p>
+   <label>ชื่อผู้ใช้ (Username)</label><input id="u" placeholder="เช่น parent1" autocomplete="off">
+   <label>รหัสผ่าน (Password)</label><input id="p" type="password" placeholder="••••" autocomplete="off">
+   <div class="err" id="err"></div>
+   <button class="btn" onclick="login()">เข้าสู่ระบบ</button>
+   <div class="hint"><b>บัญชีสาธิต:</b><br>parent1 / 1234 → ด.ญ. กานต์ธิดา<br>parent2 / 1234 → ด.ช. ภูริภัทร</div>
  </div>
 
  <div id="report" class="card hidden">
-   <div class="top"><div class="avatar" id="ava">ก</div><div style="flex:1"><div class="name" id="cname"></div><small id="cclass"></small></div><a class="back" onclick="logout()">ออก</a></div>
-   <div>ผลการประเมิน เทอม 1/2569 · <span class="lvl" id="lvl"></span></div>
-   <div class="bars" id="bars"></div>
-   <div class="tags"><div class="tag s">จุดแข็ง: <b id="strong"></b></div><div class="tag d">ด้านที่ควรส่งเสริม: <b id="weak"></b></div></div>
-   <div class="muted" id="avgline"></div>
-   <div class="row"><button class="btn" onclick="showCert()">🏅 ดูเกียรติบัตร</button></div>
+   <div class="top"><div class="avatar" id="ava">ก</div><div><div class="nm" id="cname"></div><small id="cnick"></small></div><a class="back" onclick="logout()">ออกจากระบบ</a></div>
+   <div class="meta" id="meta"></div>
+   <div class="lvlrow"><span class="lvl" id="lvl"></span><span class="avg">คะแนนเฉลี่ยถ่วงน้ำหนัก <b id="avg"></b> / 100</span></div>
+   <div class="split"><div class="radar" id="radar"></div><div class="bars" id="bars"></div></div>
+   <div class="sec">รายละเอียดรายด้าน</div>
+   <div id="details"></div>
+   <div class="sec">สรุปและข้อเสนอแนะ</div>
+   <div class="tags"><div class="tag s"><b>จุดแข็ง</b><span id="strong"></span></div><div class="tag d"><b>ด้านที่ควรส่งเสริม</b><span id="weak"></span></div></div>
+   <div class="sign"><div>ผู้ประเมิน</div><div>ผู้อำนวยการศูนย์</div><div>ผู้ปกครอง</div></div>
+   <div class="row"><button class="btn alt" onclick="showCert()">🏅 ดูเกียรติบัตร</button><button class="btn" onclick="window.print()">พิมพ์รายงาน / PDF</button></div>
  </div>
 
  <div id="certv" class="card hidden">
-   <div class="cert">
-     <div class="muted">BRIGHTSTAR ASSESSMENT INSTITUTE</div>
+   <div class="certwrap"><div class="cert"><div class="cert-in">
+     <div class="inst">BRIGHTSTAR ASSESSMENT INSTITUTE</div>
      <div class="ttl">Certificate of Achievement</div>
-     <div class="muted">ขอมอบเกียรติบัตรนี้เพื่อแสดงว่า</div>
+     <div class="sm">ขอมอบเกียรติบัตรฉบับนี้เพื่อแสดงว่า</div>
      <div class="nm" id="certname"></div>
+     <div class="sm">ได้ผ่านการประเมินสมรรถนะ Star Path ในระดับ</div>
      <div class="stars" id="certstars"></div>
-     <div id="certlvl" style="font-weight:700;color:var(--berry)"></div>
-     <div class="muted" id="certscore"></div>
-     <div class="muted" style="margin-top:14px">ลงนาม ผู้อำนวยการ · ผู้ประเมิน</div>
-   </div>
-   <div class="row"><button class="btn g" onclick="back2report()">← กลับ</button><button class="btn" onclick="window.print()">พิมพ์ / บันทึก PDF</button></div>
+     <div class="lv" id="certlvl"></div>
+     <div class="sm" id="certscore"></div>
+     <div class="seal" id="seal">BSI<br>CERTIFIED</div>
+     <div class="csign"><div>ผู้อำนวยการ</div><div>ผู้ประเมิน</div></div>
+   </div></div></div>
+   <div class="row"><button class="btn alt" onclick="show('report')">← กลับ</button><button class="btn" onclick="window.print()">พิมพ์ / บันทึก PDF</button></div>
  </div>
 </div>
 <script>
+const ACC={parent1:{pw:"1234",i:0},parent2:{pw:"1234",i:1}};
 const kids=[
- {name:"ด.ญ. กานต์ธิดา ศรีสุข",nick:"ใบเฟิร์น",cls:"อนุบาล 3",init:"ก",s:{ภาษาไทย:85,อังกฤษ:78,คณิต:92,"EF/IQ":88,กล้ามเนื้อ:75}},
- {name:"ด.ช. ภูริภัทร ตั้งใจ",nick:"ภูมิ",cls:"อนุบาล 3",init:"ภ",s:{ภาษาไทย:45,อังกฤษ:40,คณิต:48,"EF/IQ":42,กล้ามเนื้อ:55}}
+ {name:"ด.ญ. กานต์ธิดา ศรีสุข",nick:"ใบเฟิร์น",cls:"อนุบาล 3",id:"LB-69-001",exm:"ครูสมศรี",term:"1/2569",date:"1 มิ.ย. 2569",init:"ก",
+  s:{"ภาษาไทย":85,"ภาษาอังกฤษ":78,"คณิต-ตรรกะ":92,"EF/IQ":88,"กล้ามเนื้อ":75}},
+ {name:"ด.ช. ภูริภัทร ตั้งใจ",nick:"ภูมิ",cls:"อนุบาล 3",id:"LB-69-008",exm:"ครูสมชาย",term:"1/2569",date:"2 มิ.ย. 2569",init:"ภ",
+  s:{"ภาษาไทย":45,"ภาษาอังกฤษ":40,"คณิต-ตรรกะ":48,"EF/IQ":42,"กล้ามเนื้อ":55}}
 ];
-const W={ภาษาไทย:20,อังกฤษ:20,คณิต:25,"EF/IQ":20,กล้ามเนื้อ:15};
-const LV=[[0,34,"ดาวน้อย",1],[35,49,"ดาวสุกใส",2],[50,64,"ดาวรุ่ง",3],[65,79,"ดาวเปล่งแสง",4],[80,89,"ดาวเจิดจ้า",5],[90,95,"ดาวแชมเปี้ยน",6],[96,100,"ดาวมาสเตอร์",7]];
+const W={"ภาษาไทย":20,"ภาษาอังกฤษ":20,"คณิต-ตรรกะ":25,"EF/IQ":20,"กล้ามเนื้อ":15};
+const LV=[[0,34,"ดาวน้อย","Little Star",1],[35,49,"ดาวสุกใส","Bright Star",2],[50,64,"ดาวรุ่ง","Rising Star",3],[65,79,"ดาวเปล่งแสง","Shining Star",4],[80,89,"ดาวเจิดจ้า","Brilliant Star",5],[90,95,"ดาวแชมเปี้ยน","Champion Star",6],[96,100,"ดาวมาสเตอร์","Master Star",7]];
+const SUG={"ภาษาไทย":"อ่านนิทานด้วยกันทุกวัน ชวนเล่าเรื่องและตั้งคำถาม","ภาษาอังกฤษ":"ดูสื่อภาษาอังกฤษสั้น ๆ ร้องเพลง ฝึกคำศัพท์ใกล้ตัว","คณิต-ตรรกะ":"เล่นนับสิ่งของ จับคู่ เปรียบเทียบ เล่นบอร์ดเกมง่าย ๆ","EF/IQ":"เล่นเกมรอคิว เก็บของตามขั้นตอน ต่อจิ๊กซอว์","กล้ามเนื้อ":"ปั้นดินน้ำมัน ตัดกระดาษ วิ่งเล่น ปีนป่ายอย่างปลอดภัย"};
 let cur=0;
 function wavg(s){let n=0,d=0;for(k in s){n+=s[k]*W[k];d+=W[k];}return Math.round(n/d*10)/10;}
 function lvl(a){for(const r of LV)if(a>=r[0]&&a<=r[1])return r;return LV[0];}
-function enter(){cur=+document.getElementById('pick').value;render();show('report');}
-function render(){const k=kids[cur];document.getElementById('cname').textContent=k.name+" ("+k.nick+")";
- document.getElementById('cclass').textContent=k.cls;document.getElementById('ava').textContent=k.init;
- const a=wavg(k.s),L=lvl(a);document.getElementById('lvl').textContent="ระดับ "+["","I","II","III","IV","V","VI","VII"][L[3]]+" · "+L[2];
- let bars="";const ent=Object.entries(k.s);for(const[d,v]of ent){bars+=`<div class="bar"><div class="lab">${d}</div><div class="track"><div class="fill" style="width:${v}%"></div></div><div class="v">${v}</div></div>`;}
- document.getElementById('bars').innerHTML=bars;
+function band(v){return v>=80?["ดีเยี่ยม","#2E7D32"]:v>=65?["ดี","#1A7F5A"]:v>=50?["ตามเกณฑ์","#C9A961"]:v>=35?["กำลังพัฒนา","#E07A2F"]:["ควรส่งเสริม","#C62828"];}
+function cefr(v){return v>=80?"เทียบ CEFR ≈ A2 (Movers)":v>=50?"เทียบ CEFR ≈ A1":"เทียบ CEFR ≈ Pre-A1";}
+function login(){const u=document.getElementById('u').value.trim(),p=document.getElementById('p').value.trim();
+ const a=ACC[u];if(a&&a.pw===p){cur=a.i;render();show('report');}else{document.getElementById('err').textContent="ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";}}
+function logout(){document.getElementById('u').value='';document.getElementById('p').value='';document.getElementById('err').textContent='';show('login');}
+function radar(s){const keys=Object.keys(s),n=keys.length,cx=135,cy=130,R=92;
+ let grid='';for(let g=1;g<=4;g++){let pts='';for(let i=0;i<n;i++){const ang=-Math.PI/2+i*2*Math.PI/n;pts+=(cx+Math.cos(ang)*R*g/4)+','+(cy+Math.sin(ang)*R*g/4)+' ';}grid+=`<polygon points="${pts}" fill="none" stroke="#e7ddcb"/>`;}
+ let axes='',labels='',pts='';for(let i=0;i<n;i++){const ang=-Math.PI/2+i*2*Math.PI/n;const x=cx+Math.cos(ang)*R,y=cy+Math.sin(ang)*R;axes+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#e7ddcb"/>`;
+  const v=s[keys[i]]/100;pts+=(cx+Math.cos(ang)*R*v)+','+(cy+Math.sin(ang)*R*v)+' ';
+  const lx=cx+Math.cos(ang)*(R+16),ly=cy+Math.sin(ang)*(R+16);labels+=`<text x="${lx}" y="${ly}" font-size="10" fill="#6B6057" text-anchor="middle">${keys[i]}</text>`;}
+ return `<svg width="270" height="260" viewBox="0 0 270 260">${grid}${axes}<polygon points="${pts}" fill="rgba(185,29,58,.22)" stroke="#B91D3A" stroke-width="2"/>${labels}</svg>`;}
+function render(){const k=kids[cur];document.getElementById('cname').textContent=k.name;document.getElementById('cnick').textContent="ชื่อเล่น: "+k.nick;document.getElementById('ava').textContent=k.init;
+ document.getElementById('meta').innerHTML=`<span>รหัสนักเรียน: <b>${k.id}</b></span><span>ชั้น: ${k.cls}</span><span>เทอม: ${k.term}</span><span>ผู้ประเมิน: ${k.exm}</span><span>วันที่: ${k.date}</span>`;
+ const a=wavg(k.s),L=lvl(a);document.getElementById('lvl').textContent="ระดับ "+["","I","II","III","IV","V","VI","VII"][L[4]]+" · "+L[2]+" ("+L[3]+")";document.getElementById('avg').textContent=a;
+ document.getElementById('radar').innerHTML=radar(k.s);
+ const ent=Object.entries(k.s);let bars='',det='';
+ for(const[d,v]of ent){const b=band(v);bars+=`<div class="bar"><div class="lab">${d}</div><div class="track"><div class="fill" style="width:${v}%;background:${b[1]}"></div></div><div class="v">${v}</div></div>`;
+  det+=`<div class="det"><div class="dh"><span>${d}</span><span class="sc">${v}/100 · ${b[0]}</span></div><div class="dx">คำแนะนำที่บ้าน: ${SUG[d]}</div>${d==="ภาษาอังกฤษ"?`<span class="cefr">${cefr(v)}</span>`:""}</div>`;}
+ document.getElementById('bars').innerHTML=bars;document.getElementById('details').innerHTML=det;
  const mx=ent.reduce((a,b)=>b[1]>a[1]?b:a),mn=ent.reduce((a,b)=>b[1]<a[1]?b:a);
- document.getElementById('strong').textContent=mx[0];document.getElementById('weak').textContent=mn[0];
- document.getElementById('avgline').textContent="คะแนนเฉลี่ยถ่วงน้ำหนัก "+a+" / 100";}
-function showCert(){const k=kids[cur],a=wavg(k.s),L=lvl(a);
- document.getElementById('certname').textContent=k.name;
- document.getElementById('certstars').textContent="★".repeat(L[3])+"☆".repeat(7-L[3]);
- document.getElementById('certlvl').textContent="ระดับ "+L[2];
- document.getElementById('certscore').textContent="คะแนนเฉลี่ย "+a+" / 100 · เทอม 1/2569";show('certv');}
-function back2report(){show('report');}function logout(){show('login');}
+ document.getElementById('strong').textContent=`${mx[0]} (${mx[1]}) — ${SUG[mx[0]]}`;
+ document.getElementById('weak').textContent=`${mn[0]} (${mn[1]}) — ${SUG[mn[0]]}`;}
+function showCert(){const k=kids[cur],a=wavg(k.s),L=lvl(a);document.getElementById('certname').textContent=k.name;
+ document.getElementById('certstars').textContent="★".repeat(L[4])+"☆".repeat(7-L[4]);
+ document.getElementById('certlvl').textContent=L[2]+" · "+L[3];
+ document.getElementById('certscore').textContent="คะแนนเฉลี่ย "+a+" / 100 · เทอม "+k.term+" · "+k.date;
+ document.getElementById('seal').innerHTML="ระดับ "+["","I","II","III","IV","V","VI","VII"][L[4]];show('certv');}
 function show(id){for(const x of['login','report','certv'])document.getElementById(x).classList.add('hidden');document.getElementById(id).classList.remove('hidden');}
 </script></body></html>
