@@ -1,0 +1,107 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>รายงานผลของบุตรหลาน · BrightStar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#9C7B3F;--gold:#C9A961;--ink:#241B12;--paper:#F6F1E6;--cream:#FBF7EE;--grey:#6E6353;--line:#EADFCB;--green:#2E7D32}
+*{box-sizing:border-box}body{margin:0;font-family:"Sarabun",sans-serif;color:var(--ink);background:var(--cream);line-height:1.55}
+.bar{background:#241B12;color:#FBF7EE;font-size:13px;padding:8px 16px;display:flex;gap:16px;align-items:center;border-bottom:2px solid #C9A961;flex-wrap:wrap}
+.bar a{color:#FBF7EE;text-decoration:none}.bar a.h{color:#C9A961;font-weight:700}
+.hero{background:linear-gradient(160deg,#5C3A22,#9C7B3F 130%);color:#fff;text-align:center;padding:30px 18px 26px;border-bottom:3px solid var(--gold)}
+.hero img{width:74px;background:#FFFDF7;border-radius:14px;padding:6px}
+.hero .k{letter-spacing:4px;font-size:11px;font-weight:700;color:#ffe9b0;margin-top:6px}
+.hero h1{font-family:"Cormorant Garamond",serif;font-size:30px;margin:4px 0 0}
+.wrap{max-width:780px;margin:0 auto;padding:18px 16px 70px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin:14px 0;box-shadow:0 4px 16px rgba(120,80,20,.07)}
+.who{text-align:center}.who .nm{font-size:23px;font-weight:700;color:var(--brand)}.who .meta{color:var(--grey);font-size:13.5px;margin-top:3px}
+.levelwrap{text-align:center;margin:10px 0}
+.starline{font-size:24px;letter-spacing:4px;color:var(--gold)}
+.levelbadge{display:inline-block;background:linear-gradient(135deg,var(--gold),#E4D4A8);color:#241B12;font-weight:700;border-radius:30px;padding:8px 22px;font-size:18px;margin-top:6px}
+.bigw{font-size:46px;font-weight:700;color:var(--brand);text-align:center;line-height:1}
+.bigw small{font-size:16px;color:var(--grey);font-weight:400}
+.dom{margin:13px 0}
+.dom .top{display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px}
+.dom .top b{font-weight:600}.dom .sc{font-weight:700;color:var(--brand)}
+.track{height:14px;background:var(--paper);border-radius:10px;overflow:hidden}
+.fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--gold),var(--brand))}
+.sec-h{font-family:"Cormorant Garamond",serif;color:var(--brand);font-size:21px;margin:0 0 8px;border-left:5px solid var(--gold);padding-left:10px}
+.note{background:var(--paper);border-radius:12px;padding:12px 15px;font-size:14px;margin-top:8px}
+.note.good{border-left:4px solid var(--green)}.note.work{border-left:4px solid var(--gold)}
+.btns{text-align:center;margin-top:16px;display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;padding:10px 20px;border-radius:24px;font-size:14px;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand)}
+.empty{text-align:center;padding:30px 16px}.empty .big{font-size:40px}.empty h2{color:var(--brand);font-family:"Cormorant Garamond",serif}
+.gate{max-width:360px;margin:0 auto;text-align:center}
+.gate input{width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;font-size:15px;text-align:center;margin:8px 0;font-family:inherit}
+.scale{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-top:10px;font-size:11px;color:var(--grey)}
+.scale span{background:var(--paper);border-radius:10px;padding:2px 8px}
+footer{text-align:center;color:var(--grey);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:14px}
+@media print{.bar,.btns{display:none}body{background:#fff}}
+</style></head><body>
+<div class="bar"><a class="h" href="index.html">★ BrightStar</a><a href="index.html">หน้าแรก</a><a href="parent_portal_demo.html">พอร์ทัลผู้ปกครอง</a></div>
+<div class="hero"><img src="logo.png" alt="logo"><div class="k">BRIGHTSTAR ASSESSMENT INSTITUTE</div><h1>รายงานผลการประเมิน</h1></div>
+<div class="wrap" id="app"></div>
+<footer>BrightStar Assessment Institute · Star Path 7 ระดับ · รายงานนี้สร้างจากลิงก์เฉพาะของบุตรหลานท่าน</footer>
+<script>
+const W={th:20,en:20,ma:25,ef:20,mo:15};
+const NAMES={th:["🇹🇭","ภาษาไทย"],en:["🔤","ภาษาอังกฤษ"],ma:["🔢","คณิต-ตรรกะ"],ef:["🧠","EF / เชาวน์"],mo:["✋","พัฒนาการกล้ามเนื้อ"]};
+const LEVELDESC={
+ 'I':'ดาวดวงน้อยกำลังเริ่มต้นเส้นทาง — วัยนี้คือช่วงเวลาทองของการเล่นและสำรวจ',
+ 'II':'ดาวเริ่มฉายแสง — พัฒนาการกำลังก่อตัวอย่างน่ารัก ค่อย ๆ เติบโตไปด้วยกัน',
+ 'III':'ดาวสุกใส — มีพื้นฐานหลายด้านที่มั่นคงขึ้น พร้อมต่อยอด',
+ 'IV':'ดาวเด่น — ทำได้ดีในหลายกลุ่มสมรรถนะ เหมาะกับการเสริมความท้าทายเบา ๆ',
+ 'V':'ดาวนำทาง — สมรรถนะโดยรวมแข็งแรง เป็นผู้นำในกลุ่มวัยเดียวกัน',
+ 'VI':'ดาวเจิดจรัส — โดดเด่นรอบด้าน พร้อมกิจกรรมเสริมศักยภาพขั้นสูง',
+ 'VII':'ดาวมาสเตอร์ — เปล่งประกายเต็มที่ในทุกด้าน น่าภาคภูมิใจอย่างยิ่ง'};
+function lvObj(v){const L=[[96,'VII','ดาวมาสเตอร์'],[88,'VI','ดาวเจิดจรัส'],[78,'V','ดาวนำทาง'],[65,'IV','ดาวเด่น'],[50,'III','ดาวสุกใส'],[35,'II','ดาวเริ่มฉาย'],[0,'I','ดาวน้อย']];for(const[m,r,n]of L)if(v>=m)return{r,n};}
+function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function decode(){try{const h=location.hash;const m=h.match(/d=([^&]+)/);if(!m)return null;return JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(m[1])))));}catch(e){return null}}
+
+function render(){
+ const app=document.getElementById('app');const d=decode();
+ if(!d){
+  app.innerHTML=`<div class="card empty"><div class="big">🔗</div><h2>ยังไม่มีข้อมูลรายงาน</h2>
+   <p style="color:var(--grey)">หน้านี้จะแสดงผลเมื่อเปิดจาก<b>ลิงก์เฉพาะของบุตรหลาน</b>ที่ทางโรงเรียนส่งให้<br>กรุณาเปิดลิงก์ที่ได้รับทาง LINE / อีเมล อีกครั้ง</p>
+   <div class="btns"><a class="btn ghost" href="parent_portal_demo.html">ดูตัวอย่างพอร์ทัลผู้ปกครอง</a></div></div>`;return;
+ }
+ const stars='★'.repeat(romanToNum(d.lv.r))+'☆'.repeat(7-romanToNum(d.lv.r));
+ // domain bars
+ let doms='';const entries=[];
+ for(const k in W){const v=d.s&&d.s[k];if(v!==''&&v!=null){entries.push([k,Number(v)]);
+  doms+=`<div class="dom"><div class="top"><b>${NAMES[k][0]} ${NAMES[k][1]}</b><span class="sc">${v}/100</span></div><div class="track"><div class="fill" style="width:${v}%"></div></div></div>`;}
+  else{doms+=`<div class="dom"><div class="top"><b>${NAMES[k][0]} ${NAMES[k][1]}</b><span style="color:var(--grey)">ยังไม่ได้ประเมิน</span></div><div class="track"></div></div>`;}
+ }
+ entries.sort((a,b)=>b[1]-a[1]);
+ const hi=entries[0],lo=entries[entries.length-1];
+ let narr='';
+ if(hi)narr+=`<div class="note good"><b>จุดเด่น:</b> ${NAMES[hi[0]][1]} (${hi[1]} คะแนน) — ชื่นชมและสนับสนุนให้ทำกิจกรรมด้านนี้ต่อเนื่อง</div>`;
+ if(lo&&entries.length>1&&lo[0]!==hi[0])narr+=`<div class="note work"><b>ด้านที่ควรส่งเสริม:</b> ${NAMES[lo[0]][1]} (${lo[1]} คะแนน) — เพิ่มกิจกรรมเล่น-เรียนรู้ด้านนี้ที่บ้านอย่างสนุก ไม่กดดัน</div>`;
+
+ app.innerHTML=`
+ <div class="card who">
+   <div class="nm">${esc(d.n)}</div>
+   <div class="meta">ระดับชั้น ${esc(d.c)} · รหัส ${esc(d.id)}${d.dt?' · ประเมินวันที่ '+esc(d.dt):''}</div>
+ </div>
+ <div class="card">
+   <div class="levelwrap"><div class="starline">${stars}</div>
+    <div class="levelbadge">ระดับ ${d.lv.r} · ${d.lv.n}</div></div>
+   <div class="bigw">${d.w}<small> / 100 คะแนนรวม</small></div>
+   <p style="text-align:center;color:var(--grey);font-size:14px;margin:10px 4px 0">${LEVELDESC[d.lv.r]||''}</p>
+   <div class="scale"><span>I 0–34</span><span>II 35–49</span><span>III 50–64</span><span>IV 65–77</span><span>V 78–87</span><span>VI 88–95</span><span>VII 96–100</span></div>
+ </div>
+ <div class="card">
+   <div class="sec-h">คะแนนรายด้าน (5 กลุ่มสมรรถนะ)</div>
+   ${doms}
+   ${narr}
+ </div>
+ <div class="card" style="text-align:center">
+   <div class="sec-h" style="text-align:left">เกียรติบัตร</div>
+   <p style="color:var(--grey);font-size:14px">บุตรหลานของท่านได้รับเกียรติบัตรระดับ <b>${d.lv.n}</b> ของสถาบัน</p>
+   <div class="btns"><a class="btn" href="BSI_Certificate_Premium.html" target="_blank">🏆 ดูตัวอย่างเกียรติบัตร</a>
+    <button class="btn ghost" onclick="window.print()">🖨 พิมพ์รายงาน</button></div>
+ </div>
+ <p style="text-align:center;color:var(--grey);font-size:12px">รายงานนี้เป็นความลับเฉพาะครอบครัว · จัดทำตาม พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล (PDPA)</p>`;
+}
+function romanToNum(r){return {I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7}[r]||0}
+window.addEventListener('hashchange',render);render();
+</script>
+</body></html>

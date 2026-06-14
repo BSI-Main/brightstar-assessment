@@ -1,0 +1,195 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ระบบครู/เจ้าหน้าที่ · ลงทะเบียน + กรอกผล · BrightStar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#9C7B3F;--gold:#C9A961;--ink:#241B12;--paper:#F6F1E6;--cream:#FBF7EE;--grey:#6E6353;--line:#EADFCB;--green:#2E7D32;--c:#3457B2}
+*{box-sizing:border-box}body{margin:0;font-family:"Sarabun",sans-serif;color:var(--ink);background:var(--cream);line-height:1.5}
+.bar{background:#241B12;color:#FBF7EE;font-size:13px;padding:8px 16px;display:flex;gap:16px;align-items:center;border-bottom:2px solid #C9A961;flex-wrap:wrap}
+.bar a{color:#FBF7EE;text-decoration:none}.bar a.h{color:#C9A961;font-weight:700}
+.hero{background:linear-gradient(160deg,#5C3A22,var(--c) 135%);color:#fff;text-align:center;padding:26px 18px 22px;border-bottom:3px solid var(--gold)}
+.hero img{width:70px;background:#FFFDF7;border-radius:14px;padding:6px}
+.hero .k{letter-spacing:4px;font-size:11px;font-weight:700;color:#ffe9b0;margin-top:6px}
+.hero h1{font-family:"Cormorant Garamond",serif;font-size:30px;margin:3px 0}
+.hero .sub{opacity:.9;font-size:13.5px}
+.wrap{max-width:980px;margin:0 auto;padding:16px 16px 70px}
+.warn{background:#fff;border:1px solid #efd9b0;border-left:5px solid var(--gold);border-radius:12px;padding:11px 15px;font-size:13px;margin:14px 0}
+.warn b{color:var(--brand)}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 3px 12px rgba(120,80,20,.05)}
+.card h2{font-family:"Cormorant Garamond",serif;color:var(--brand);font-size:22px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+.card .hint{color:var(--grey);font-size:12.5px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+label{display:block;font-size:12.5px;font-weight:600;color:var(--grey);margin-bottom:3px}
+input,select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:9px;font-family:inherit;font-size:14px;background:var(--paper);color:var(--ink)}
+input:focus,select:focus{outline:none;border-color:var(--gold)}
+.btn{display:inline-block;background:var(--brand);color:#fff;border:0;font-weight:700;font-family:inherit;text-decoration:none;padding:10px 18px;border-radius:22px;font-size:14px;cursor:pointer}
+.btn:hover{filter:brightness(1.07)}.btn.sm{padding:6px 12px;font-size:12.5px}
+.btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand)}
+.btn.green{background:var(--green)}.btn.gold{background:var(--gold);color:#241B12}.btn.del{background:#A33}
+.row-actions{display:flex;gap:6px;flex-wrap:wrap}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
+th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{color:var(--brand);font-size:12.5px}
+.lv{display:inline-block;font-weight:700;color:#fff;background:var(--gold);color:#241B12;border-radius:14px;padding:2px 10px;font-size:12px;white-space:nowrap}
+.lv.none{background:#E4DAC9;color:var(--grey)}
+.muted{color:var(--grey);font-size:12px}
+.empty{text-align:center;color:var(--grey);padding:22px;font-size:13.5px}
+dialog{border:0;border-radius:16px;padding:0;max-width:520px;width:92%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+dialog::backdrop{background:rgba(40,27,18,.45)}
+.dlg-h{background:var(--brand);color:#fff;padding:13px 18px;font-weight:700;font-size:16px;border-radius:16px 16px 0 0;display:flex;justify-content:space-between;align-items:center}
+.dlg-b{padding:18px}
+.score-row{display:flex;align-items:center;gap:10px;margin:7px 0}
+.score-row label{flex:1;margin:0}.score-row input{width:90px}
+.score-row .w{font-size:11px;color:var(--grey);width:64px}
+.bigscore{text-align:center;background:var(--paper);border-radius:12px;padding:12px;margin-top:10px}
+.bigscore .n{font-size:34px;font-weight:700;color:var(--brand)}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#241B12;color:#fff;padding:11px 20px;border-radius:24px;font-size:14px;opacity:0;transition:.25s;z-index:99;pointer-events:none}
+.toast.show{opacity:1}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+footer{text-align:center;color:var(--grey);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:14px}
+@media(max-width:560px){.hide-sm{display:none}}
+</style></head><body>
+<div class="bar"><a class="h" href="index.html">★ BrightStar</a><a href="index.html">หน้าแรก</a><a href="BSI_Test_Hub.html">ศูนย์ทดสอบ</a><a href="parent_portal_demo.html">พอร์ทัลผู้ปกครอง</a></div>
+<div class="hero"><img src="logo.png" alt="logo"><div class="k">BRIGHTSTAR ASSESSMENT INSTITUTE</div>
+<h1>ระบบครู / เจ้าหน้าที่</h1><div class="sub">ลงทะเบียนนักเรียน · กรอกผลทดสอบ · สร้างลิงก์รายงานให้ผู้ปกครอง</div></div>
+<div class="wrap">
+
+<div class="warn"><b>ความเป็นส่วนตัว (PDPA):</b> ข้อมูลที่กรอกถูกเก็บใน<b>เบราว์เซอร์เครื่องนี้เท่านั้น</b> (ไม่ถูกส่งขึ้นอินเทอร์เน็ต/GitHub) · เมื่อกด “ลิงก์ผู้ปกครอง” ระบบจะฝังข้อมูลของเด็กไว้ในลิงก์เพื่อให้ผู้ปกครองเปิดดูได้ — ส่งลิงก์ผ่านช่องทางส่วนตัว (LINE/อีเมล) เท่านั้น · แนะนำกด “สำรองข้อมูล” เป็นระยะ</div>
+
+<div class="card">
+<h2>① ลงทะเบียนนักเรียน</h2>
+<div class="hint">กรอกข้อมูลแล้วกดเพิ่ม — รหัสนักเรียนใช้อ้างอิงและกันซ้ำ</div>
+<div class="grid">
+<div><label>ชื่อ-สกุลนักเรียน *</label><input id="r_name" placeholder="เช่น เด็กหญิงพิมพ์ลภัส ใจดี"></div>
+<div><label>รหัสนักเรียน *</label><input id="r_id" placeholder="เช่น LB-2569-001"></div>
+<div><label>ระดับชั้น</label><select id="r_class"><option>เตรียมอนุบาล</option><option>อนุบาล 1</option><option>อนุบาล 2</option><option>อนุบาล 3</option></select></div>
+<div><label>ชื่อผู้ปกครอง</label><input id="r_parent" placeholder="ชื่อผู้ปกครอง"></div>
+<div><label>ช่องทางติดต่อผู้ปกครอง</label><input id="r_contact" placeholder="LINE / อีเมล / เบอร์โทร"></div>
+</div>
+<div style="margin-top:12px"><button class="btn" onclick="addStudent()">➕ เพิ่มนักเรียน</button></div>
+</div>
+
+<div class="card">
+<h2>② รายชื่อนักเรียน &amp; ผลทดสอบ</h2>
+<div class="hint">กด “กรอกคะแนน” เพื่อบันทึกผล 5 ด้าน · ระบบคิดคะแนนถ่วงน้ำหนักและระดับ Star Path ให้อัตโนมัติ</div>
+<input id="search" placeholder="🔍 ค้นหาชื่อ/รหัส/ชั้น" oninput="renderTable()" style="max-width:320px">
+<div style="overflow-x:auto"><table id="tbl"><thead><tr>
+<th>นักเรียน</th><th class="hide-sm">ชั้น</th><th>คะแนน</th><th>ระดับ Star Path</th><th>จัดการ</th>
+</tr></thead><tbody id="tbody"></tbody></table></div>
+<div id="empty" class="empty">ยังไม่มีนักเรียน — เพิ่มในส่วน ① ด้านบน</div>
+<div class="toolbar">
+<button class="btn ghost sm" onclick="exportData()">💾 สำรองข้อมูล (.json)</button>
+<label class="btn ghost sm" style="cursor:pointer">📂 นำเข้าข้อมูล<input type="file" accept=".json" onchange="importData(event)" style="display:none"></label>
+<button class="btn del sm" onclick="clearAll()">🗑 ล้างทั้งหมด</button>
+</div>
+</div>
+
+<footer>BrightStar Assessment Institute · ระบบครู/เจ้าหน้าที่ (ทำงานในเครื่อง) · Star Path 7 ระดับ · น้ำหนัก ไทย20·อังกฤษ20·คณิต25·EF20·กล้ามเนื้อ15</footer>
+</div>
+
+<dialog id="dlg"><div class="dlg-h"><span id="dlg_title">กรอกคะแนน</span><span style="cursor:pointer" onclick="document.getElementById('dlg').close()">✕</span></div>
+<div class="dlg-b">
+<div class="muted" id="dlg_who" style="margin-bottom:8px"></div>
+<div class="score-row"><label>🇹🇭 ภาษาไทย</label><span class="w">น้ำหนัก 20</span><input type="number" min="0" max="100" id="s_th" oninput="calc()"></div>
+<div class="score-row"><label>🔤 ภาษาอังกฤษ</label><span class="w">น้ำหนัก 20</span><input type="number" min="0" max="100" id="s_en" oninput="calc()"></div>
+<div class="score-row"><label>🔢 คณิต-ตรรกะ</label><span class="w">น้ำหนัก 25</span><input type="number" min="0" max="100" id="s_ma" oninput="calc()"></div>
+<div class="score-row"><label>🧠 EF / เชาวน์</label><span class="w">น้ำหนัก 20</span><input type="number" min="0" max="100" id="s_ef" oninput="calc()"></div>
+<div class="score-row"><label>✋ กล้ามเนื้อ</label><span class="w">น้ำหนัก 15</span><input type="number" min="0" max="100" id="s_mo" oninput="calc()"></div>
+<div class="muted">เว้นว่างได้ถ้ายังไม่ได้สอบด้านนั้น — ระบบคิดเฉพาะด้านที่กรอก</div>
+<div class="bigscore"><div class="muted">คะแนนรวมถ่วงน้ำหนัก</div><div class="n" id="calc_score">—</div><div id="calc_level"></div></div>
+<div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end"><button class="btn green" onclick="saveScore()">บันทึกผล</button></div>
+</div></dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const W={th:20,en:20,ma:25,ef:20,mo:15};
+const NAMES={th:"ภาษาไทย",en:"อังกฤษ",ma:"คณิต-ตรรกะ",ef:"EF/เชาวน์",mo:"กล้ามเนื้อ"};
+const KEY="bsi_students_v1";
+let students=load();
+let editId=null;
+
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}
+function save(){localStorage.setItem(KEY,JSON.stringify(students))}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1900)}
+function weighted(s){let num=0,den=0;for(const k in W){const v=s&&s[k];if(v!==''&&v!=null&&!isNaN(v)){num+=Number(v)*W[k];den+=W[k]}}return den?Math.round(num/den*10)/10:null}
+function level(v){if(v==null)return null;const L=[[96,'VII','ดาวมาสเตอร์'],[88,'VI','ดาวเจิดจรัส'],[78,'V','ดาวนำทาง'],[65,'IV','ดาวเด่น'],[50,'III','ดาวสุกใส'],[35,'II','ดาวเริ่มฉาย'],[0,'I','ดาวน้อย']];for(const[m,r,n]of L)if(v>=m)return{r,n};}
+
+function addStudent(){
+ const name=val('r_name').trim(),id=val('r_id').trim();
+ if(!name||!id){toast('กรอกชื่อและรหัสนักเรียน');return}
+ if(students.some(s=>s.id===id)){toast('รหัสนี้มีอยู่แล้ว');return}
+ students.push({id,name,cls:val('r_class'),parent:val('r_parent').trim(),contact:val('r_contact').trim(),scores:null,date:null});
+ save();['r_name','r_id','r_parent','r_contact'].forEach(x=>document.getElementById(x).value='');
+ renderTable();toast('เพิ่มนักเรียนแล้ว');
+}
+function val(id){return document.getElementById(id).value}
+
+function renderTable(){
+ const q=val('search').trim().toLowerCase();
+ const tb=document.getElementById('tbody');tb.innerHTML='';
+ const list=students.filter(s=>!q||(s.name+s.id+s.cls).toLowerCase().includes(q));
+ document.getElementById('empty').style.display=students.length?'none':'block';
+ list.forEach(s=>{
+  const w=weighted(s.scores),lv=level(w);
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td><b>${esc(s.name)}</b><div class="muted">${esc(s.id)}${s.parent?' · ผู้ปกครอง: '+esc(s.parent):''}</div></td>
+   <td class="hide-sm">${esc(s.cls)}</td>
+   <td>${w==null?'<span class="muted">ยังไม่สอบ</span>':'<b>'+w+'</b>/100'}</td>
+   <td>${lv?'<span class="lv">'+lv.r+' '+lv.n+'</span>':'<span class="lv none">—</span>'}</td>
+   <td><div class="row-actions">
+     <button class="btn sm" onclick="openScore('${s.id}')">กรอกคะแนน</button>
+     <button class="btn gold sm" onclick="parentLink('${s.id}')">ลิงก์ผู้ปกครอง</button>
+     <button class="btn del sm" onclick="delStudent('${s.id}')">ลบ</button>
+   </div></td>`;
+  tb.appendChild(tr);
+ });
+}
+function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+
+function openScore(id){
+ editId=id;const s=students.find(x=>x.id===id);
+ document.getElementById('dlg_title').textContent='กรอกคะแนน';
+ document.getElementById('dlg_who').textContent=s.name+' · '+s.cls+' ('+s.id+')';
+ for(const k in W)document.getElementById('s_'+k).value=(s.scores&&s.scores[k]!=null)?s.scores[k]:'';
+ calc();document.getElementById('dlg').showModal();
+}
+function calc(){
+ const s={};for(const k in W){const v=document.getElementById('s_'+k).value;s[k]=v===''?'':Number(v)}
+ const w=weighted(s),lv=level(w);
+ document.getElementById('calc_score').textContent=w==null?'—':w;
+ document.getElementById('calc_level').innerHTML=lv?'<span class="lv">'+lv.r+' '+lv.n+'</span>':'';
+}
+function saveScore(){
+ const s=students.find(x=>x.id===editId);if(!s)return;
+ const sc={};let any=false;
+ for(const k in W){let v=document.getElementById('s_'+k).value;if(v!==''){v=Math.max(0,Math.min(100,Number(v)));any=true}sc[k]=v===''?'':v}
+ s.scores=any?sc:null;s.date=any?new Date().toISOString().slice(0,10):null;
+ save();renderTable();document.getElementById('dlg').close();toast('บันทึกผลแล้ว');
+}
+function delStudent(id){if(!confirm('ลบนักเรียนคนนี้?'))return;students=students.filter(s=>s.id!==id);save();renderTable()}
+
+function parentLink(id){
+ const s=students.find(x=>x.id===id);const w=weighted(s.scores),lv=level(w);
+ if(w==null){toast('ยังไม่มีผลทดสอบ — กรอกคะแนนก่อน');return}
+ const payload={n:s.name,c:s.cls,id:s.id,dt:s.date,s:s.scores,w,lv};
+ const code=encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(payload)))));
+ const url=location.href.replace(/BSI_Staff_Console\.html.*$/,'')+'BSI_Parent_View.html#d='+code;
+ navigator.clipboard.writeText(url).then(()=>toast('คัดลอกลิงก์ผู้ปกครองแล้ว ✓ ส่งทาง LINE/อีเมลได้เลย'),
+  ()=>{prompt('คัดลอกลิงก์นี้ส่งให้ผู้ปกครอง:',url)});
+}
+
+function exportData(){
+ const blob=new Blob([JSON.stringify(students,null,2)],{type:'application/json'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+ a.download='bsi_students_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('ดาวน์โหลดไฟล์สำรองแล้ว');
+}
+function importData(e){
+ const f=e.target.files[0];if(!f)return;const r=new FileReader();
+ r.onload=()=>{try{const d=JSON.parse(r.result);if(Array.isArray(d)){students=d;save();renderTable();toast('นำเข้าข้อมูลแล้ว')}else toast('ไฟล์ไม่ถูกต้อง')}catch(x){toast('อ่านไฟล์ไม่ได้')}};
+ r.readAsText(f);e.target.value='';
+}
+function clearAll(){if(!confirm('ล้างข้อมูลนักเรียนทั้งหมดในเครื่องนี้?'))return;students=[];save();renderTable();toast('ล้างข้อมูลแล้ว')}
+
+renderTable();
+</script>
+</body></html>
