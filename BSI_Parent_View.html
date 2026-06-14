@@ -79,7 +79,8 @@ function render(){
  app.innerHTML=`
  <div class="card who">
    <div class="nm">${esc(d.n)}</div>
-   <div class="meta">ระดับชั้น ${esc(d.c)} · รหัส ${esc(d.id)}${d.dt?' · ประเมินวันที่ '+esc(d.dt):''}</div>
+   <div class="meta">${d.sch?esc(d.sch)+' · ':''}ระดับชั้น ${esc(d.c)}${d.ar?' · '+esc(d.ar):''}</div>
+   <div class="meta">รหัส ${esc(d.id)}${d.dt?' · ประเมินวันที่ '+esc(d.dt):''}</div>
  </div>
  <div class="card">
    <div class="levelwrap"><div class="starline">${stars}</div>
@@ -99,7 +100,7 @@ function render(){
    <div class="btns"><a class="btn" href="BSI_Certificate_Premium.html" target="_blank">🏆 ดูตัวอย่างเกียรติบัตร</a>
     <button class="btn ghost" onclick="window.print()">🖨 พิมพ์รายงาน</button></div>
  </div>
- <p style="text-align:center;color:var(--grey);font-size:12px">รายงานนี้เป็นความลับเฉพาะครอบครัว · จัดทำตาม พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล (PDPA)</p>`;
+ <p style="text-align:center;color:var(--grey);font-size:12px">รายงานนี้เป็นความลับเฉพาะครอบครัว</p>`;
 }
 function romanToNum(r){return {I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7}[r]||0}
 window.addEventListener('hashchange',render);render();

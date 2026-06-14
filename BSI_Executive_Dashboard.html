@@ -1,0 +1,249 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>แดชบอร์ดผู้บริหาร · BrightStar Assessment Institute</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#9C7B3F;--gold:#C9A961;--ink:#241B12;--paper:#F6F1E6;--cream:#FBF7EE;--grey:#6E6353;--line:#EADFCB;--green:#2E7D32;--c:#1A7F5A}
+*{box-sizing:border-box}body{margin:0;font-family:"Sarabun",sans-serif;color:var(--ink);background:var(--cream);line-height:1.5}
+.bar{background:#241B12;color:#FBF7EE;font-size:13px;padding:8px 16px;display:flex;gap:16px;align-items:center;border-bottom:2px solid #C9A961;flex-wrap:wrap}
+.bar a{color:#FBF7EE;text-decoration:none}.bar a.h{color:#C9A961;font-weight:700}
+.hero{background:linear-gradient(160deg,#5C3A22,var(--c) 140%);color:#fff;text-align:center;padding:24px 18px 20px;border-bottom:3px solid var(--gold)}
+.hero img{width:64px;background:#FFFDF7;border-radius:13px;padding:6px}
+.hero .k{letter-spacing:4px;font-size:11px;font-weight:700;color:#ffe9b0;margin-top:6px}
+.hero h1{font-family:"Cormorant Garamond",serif;font-size:28px;margin:3px 0}
+.hero .sub{opacity:.9;font-size:13px}
+.wrap{max-width:1100px;margin:0 auto;padding:14px 16px 70px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:13px 0;box-shadow:0 3px 12px rgba(120,80,20,.05)}
+.card h2{font-family:"Cormorant Garamond",serif;color:var(--brand);font-size:20px;margin:0 0 10px}
+.src{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13px}
+.btn{display:inline-block;background:var(--brand);color:#fff;border:0;font-weight:700;font-family:inherit;text-decoration:none;padding:8px 15px;border-radius:20px;font-size:13px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand)}.btn.sm{padding:5px 11px;font-size:12px}
+.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.filters label{display:block;font-size:12px;font-weight:600;color:var(--grey);margin-bottom:3px}
+select,input{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:9px;font-family:inherit;font-size:13.5px;background:var(--paper);color:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px}
+.kpi{background:var(--paper);border-radius:13px;padding:13px 15px}
+.kpi .l{font-size:12px;color:var(--grey)}.kpi .n{font-size:30px;font-weight:700;color:var(--brand);line-height:1.1}
+.kpi .s{font-size:12px;color:var(--grey)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.chartbox{position:relative;height:300px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--brand);font-size:12px;cursor:pointer;white-space:nowrap}
+.lv{display:inline-block;font-weight:700;background:var(--gold);color:#241B12;border-radius:13px;padding:2px 9px;font-size:11.5px;white-space:nowrap}
+.lv.none{background:#E4DAC9;color:var(--grey)}
+tr.clk:hover{background:var(--paper);cursor:pointer}
+.muted{color:var(--grey);font-size:12px}
+.empty{text-align:center;color:var(--grey);padding:24px}
+dialog{border:0;border-radius:16px;padding:0;max-width:520px;width:92%}
+dialog::backdrop{background:rgba(40,27,18,.45)}
+.dlg-h{background:var(--brand);color:#fff;padding:12px 18px;font-weight:700;border-radius:16px 16px 0 0;display:flex;justify-content:space-between}
+.dlg-b{padding:18px}
+.dom{margin:9px 0}.dom .t{display:flex;justify-content:space-between;font-size:13px}.track{height:12px;background:var(--paper);border-radius:8px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--brand))}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#241B12;color:#fff;padding:10px 18px;border-radius:22px;font-size:13.5px;opacity:0;transition:.25s;z-index:99;pointer-events:none}.toast.show{opacity:1}
+footer{text-align:center;color:var(--grey);font-size:12px;margin-top:22px;border-top:1px solid var(--line);padding-top:14px}
+</style></head><body>
+<div class="bar"><a class="h" href="index.html">★ BrightStar</a><a href="index.html">หน้าแรก</a><a href="BSI_Staff_Console.html">ระบบครู</a><a href="BSI_Test_Hub.html">ศูนย์ทดสอบ</a></div>
+<div class="hero"><img src="logo.png" alt="logo"><div class="k">BRIGHTSTAR ASSESSMENT INSTITUTE</div>
+<h1>แดชบอร์ดผู้บริหาร</h1><div class="sub">ภาพรวมผลทดสอบ · เจาะลึกรายคน / ชั้น / โรงเรียน / พื้นที่ · เปรียบเทียบ</div></div>
+<div class="wrap">
+
+<div class="card"><div class="src">
+ <b>แหล่งข้อมูล:</b>
+ <button class="btn sm" onclick="useLocal()">📥 ข้อมูลจริงในเครื่อง</button>
+ <label class="btn ghost sm" style="cursor:pointer">📂 นำเข้าไฟล์ (.json)<input type="file" accept=".json" onchange="importData(event)" style="display:none"></label>
+ <button class="btn ghost sm" onclick="loadSample()">✨ โหลดข้อมูลตัวอย่าง</button>
+ <span class="muted" id="srcinfo"></span>
+</div>
+<div class="muted" style="margin-top:7px">รวมข้อมูลจากครูหลายเครื่องได้โดยให้แต่ละเครื่อง “สำรองข้อมูล (.json)” จากระบบครู แล้วนำเข้าที่นี่ · สำหรับฐานข้อมูลกลางสดหลายเครื่องพร้อมกัน ใช้ AppSheet</div>
+</div>
+
+<div class="card"><h2>ตัวกรอง</h2>
+<div class="filters">
+ <div><label>จังหวัด</label><select id="f_province" onchange="onFilter()"></select></div>
+ <div><label>อำเภอ/เขต</label><select id="f_amphoe" onchange="onFilter()"></select></div>
+ <div><label>ตำบล/แขวง</label><select id="f_tambon" onchange="onFilter()"></select></div>
+ <div><label>โรงเรียน</label><select id="f_school" onchange="onFilter()"></select></div>
+ <div><label>ระดับชั้น</label><select id="f_class" onchange="render()"></select></div>
+</div>
+<div style="margin-top:9px"><button class="btn ghost sm" onclick="resetFilters()">ล้างตัวกรอง</button></div>
+</div>
+
+<div class="card"><div class="kpis" id="kpis"></div></div>
+
+<div class="grid2">
+ <div class="card"><h2>เปรียบเทียบคะแนนเฉลี่ย</h2>
+   <div style="margin-bottom:8px"><label class="muted">เปรียบเทียบตาม: </label>
+    <select id="groupby" onchange="render()" style="width:auto;display:inline-block">
+     <option value="province">จังหวัด</option><option value="amphoe">อำเภอ</option><option value="tambon">ตำบล</option>
+     <option value="school" selected>โรงเรียน</option><option value="cls">ระดับชั้น</option></select></div>
+   <div class="chartbox"><canvas id="cmpChart"></canvas></div>
+ </div>
+ <div class="card"><h2>การกระจายระดับ Star Path</h2><div class="chartbox"><canvas id="lvChart"></canvas></div></div>
+</div>
+
+<div class="card"><h2>คะแนนเฉลี่ยรายด้าน (5 กลุ่มสมรรถนะ)</h2><div class="chartbox" style="height:260px"><canvas id="domChart"></canvas></div></div>
+
+<div class="card"><h2>รายชื่อนักเรียน (คลิกเพื่อดูรายบุคคล)</h2>
+ <input id="search" placeholder="🔍 ค้นหา" oninput="render()" style="max-width:300px;margin-bottom:8px">
+ <div style="overflow-x:auto"><table><thead><tr>
+  <th onclick="sortBy('name')">นักเรียน</th><th onclick="sortBy('school')">โรงเรียน/พื้นที่</th><th onclick="sortBy('cls')">ชั้น</th><th onclick="sortBy('w')">คะแนน</th><th onclick="sortBy('w')">ระดับ</th>
+ </tr></thead><tbody id="tbody"></tbody></table></div>
+ <div id="empty" class="empty"></div>
+</div>
+
+<footer>BrightStar Assessment Institute · แดชบอร์ดผู้บริหาร · Star Path 7 ระดับ · น้ำหนัก ไทย20·อังกฤษ20·คณิต25·EF20·กล้ามเนื้อ15</footer>
+</div>
+<dialog id="sdlg"><div class="dlg-h"><span>รายงานรายบุคคล</span><span style="cursor:pointer" onclick="document.getElementById('sdlg').close()">✕</span></div><div class="dlg-b" id="sdlg_b"></div></dialog>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const W={th:20,en:20,ma:25,ef:20,mo:15};
+const NAMES={th:"ภาษาไทย",en:"อังกฤษ",ma:"คณิต-ตรรกะ",ef:"EF/เชาวน์",mo:"กล้ามเนื้อ"};
+const KEY="bsi_students_v1";
+let data=loadLocal(), sortKey='w', sortDir=-1, charts={};
+function loadLocal(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1900)}
+function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function weighted(s){let n=0,d=0;for(const k in W){const v=s&&s[k];if(v!==''&&v!=null&&!isNaN(v)){n+=Number(v)*W[k];d+=W[k]}}return d?Math.round(n/d*10)/10:null}
+function level(v){if(v==null)return null;const L=[[96,'VII','ดาวมาสเตอร์'],[88,'VI','ดาวเจิดจรัส'],[78,'V','ดาวนำทาง'],[65,'IV','ดาวเด่น'],[50,'III','ดาวสุกใส'],[35,'II','ดาวเริ่มฉาย'],[0,'I','ดาวน้อย']];for(const[m,r,n]of L)if(v>=m)return{r,n};}
+function areaStr(s){return [s.tambon,s.amphoe,s.province].filter(Boolean).join(' · ')}
+
+function useLocal(){data=loadLocal();initFilters();render();toast('ใช้ข้อมูลจริงในเครื่อง ('+data.length+' คน)')}
+function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();
+ r.onload=()=>{try{const d=JSON.parse(r.result);if(Array.isArray(d)){data=d;initFilters();render();toast('นำเข้า '+d.length+' คน')}else toast('ไฟล์ไม่ถูกต้อง')}catch(x){toast('อ่านไฟล์ไม่ได้')}};
+ r.readAsText(f);e.target.value='';}
+function loadSample(){data=SAMPLE();initFilters();render();toast('กำลังแสดงข้อมูลตัวอย่าง '+data.length+' คน')}
+
+function uniq(arr){return [...new Set(arr.filter(Boolean))].sort()}
+function curFilter(exclude){
+ const f={province:val('f_province'),amphoe:val('f_amphoe'),tambon:val('f_tambon'),school:val('f_school'),cls:val('f_class')};
+ if(exclude)delete f[exclude];
+ return data.filter(s=>Object.entries(f).every(([k,v])=>!v||(s[k]||'')===v));
+}
+function val(id){const e=document.getElementById(id);return e?e.value:''}
+function setOpts(id,vals,cur){const e=document.getElementById(id);const keep=vals.includes(cur)?cur:'';
+ e.innerHTML='<option value="">ทั้งหมด</option>'+vals.map(v=>`<option ${v===keep?'selected':''}>${esc(v)}</option>`).join('');return keep}
+function initFilters(){
+ setOpts('f_province',uniq(data.map(s=>s.province)),val('f_province'));
+ onFilter(true);
+}
+function onFilter(skipRender){
+ // cascading: amphoe depends on province, etc.
+ const byProv=curFilter('amphoe').concat(); // not used directly
+ setOpts('f_amphoe',uniq(data.filter(s=>!val('f_province')||s.province===val('f_province')).map(s=>s.amphoe)),val('f_amphoe'));
+ setOpts('f_tambon',uniq(data.filter(s=>(!val('f_province')||s.province===val('f_province'))&&(!val('f_amphoe')||s.amphoe===val('f_amphoe'))).map(s=>s.tambon)),val('f_tambon'));
+ setOpts('f_school',uniq(data.filter(s=>(!val('f_province')||s.province===val('f_province'))&&(!val('f_amphoe')||s.amphoe===val('f_amphoe'))&&(!val('f_tambon')||s.tambon===val('f_tambon'))).map(s=>s.school)),val('f_school'));
+ setOpts('f_class',uniq(data.map(s=>s.cls)),val('f_class'));
+ if(!skipRender)render();else render();
+}
+function resetFilters(){['f_province','f_amphoe','f_tambon','f_school','f_class'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''});initFilters();render()}
+
+function filtered(){
+ const f={province:val('f_province'),amphoe:val('f_amphoe'),tambon:val('f_tambon'),school:val('f_school'),cls:val('f_class')};
+ const q=val('search').trim().toLowerCase();
+ return data.filter(s=>Object.entries(f).every(([k,v])=>!v||(s[k]||'')===v))
+   .filter(s=>!q||(s.name+s.id+(s.school||'')+areaStr(s)+s.cls).toLowerCase().includes(q));
+}
+
+function render(){
+ const list=filtered();
+ const tested=list.filter(s=>weighted(s.scores)!=null);
+ const avg=tested.length?Math.round(tested.reduce((a,s)=>a+weighted(s.scores),0)/tested.length*10)/10:null;
+ const avgLv=avg!=null?level(avg):null;
+ // KPIs
+ document.getElementById('kpis').innerHTML=[
+  ['นักเรียนทั้งหมด',list.length,'คนในมุมมองนี้'],
+  ['ทดสอบแล้ว',tested.length,(list.length?Math.round(tested.length/list.length*100):0)+'%'],
+  ['คะแนนเฉลี่ย',avg==null?'—':avg,'จาก 100'],
+  ['ระดับเฉลี่ย',avgLv?avgLv.r:'—',avgLv?avgLv.n:'ยังไม่มีผล'],
+  ['โรงเรียน',uniq(list.map(s=>s.school)).length,'แห่ง'],
+ ].map(k=>`<div class="kpi"><div class="l">${k[0]}</div><div class="n">${k[1]}</div><div class="s">${k[2]}</div></div>`).join('');
+ drawCompare(list);drawLevel(tested);drawDomain(tested);drawTable(list);
+}
+
+function drawCompare(list){
+ const gk=val('groupby');const groups={};
+ list.forEach(s=>{const w=weighted(s.scores);if(w==null)return;const key=s[gk]||'(ไม่ระบุ)';(groups[key]=groups[key]||[]).push(w)});
+ let arr=Object.entries(groups).map(([k,v])=>[k,Math.round(v.reduce((a,b)=>a+b,0)/v.length*10)/10,v.length]);
+ arr.sort((a,b)=>b[1]-a[1]);arr=arr.slice(0,12);
+ mkChart('cmpChart','bar',{labels:arr.map(a=>a[0]),datasets:[{label:'คะแนนเฉลี่ย',data:arr.map(a=>a[1]),backgroundColor:'#9C7B3F'}]},
+  {plugins:{legend:{display:false},tooltip:{callbacks:{afterLabel:c=>'จำนวน '+arr[c.dataIndex][2]+' คน'}}},scales:{y:{max:100,beginAtZero:true}}});
+}
+function drawLevel(tested){
+ const order=['I','II','III','IV','V','VI','VII'];const cnt={};order.forEach(o=>cnt[o]=0);
+ tested.forEach(s=>{const lv=level(weighted(s.scores));if(lv)cnt[lv.r]++});
+ mkChart('lvChart','doughnut',{labels:order.map(o=>'ระดับ '+o),datasets:[{data:order.map(o=>cnt[o]),
+   backgroundColor:['#E4DAC9','#D8C98F','#C9A961','#B0883C','#9C7B3F','#7C5E2E','#5C3A22']}]},
+   {plugins:{legend:{position:'right',labels:{font:{size:11}}}}});
+}
+function drawDomain(tested){
+ const sum={},n={};for(const k in W){sum[k]=0;n[k]=0}
+ tested.forEach(s=>{for(const k in W){const v=s.scores&&s.scores[k];if(v!==''&&v!=null){sum[k]+=Number(v);n[k]++}}});
+ const labels=Object.keys(W).map(k=>NAMES[k]);
+ const vals=Object.keys(W).map(k=>n[k]?Math.round(sum[k]/n[k]*10)/10:0);
+ mkChart('domChart','bar',{labels,datasets:[{label:'คะแนนเฉลี่ย',data:vals,backgroundColor:['#9C7B3F','#E07A2F','#1A7F5A','#3457B2','#8A4FB3']}]},
+  {indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{max:100,beginAtZero:true}}});
+}
+function mkChart(id,type,data,opts){if(charts[id])charts[id].destroy();
+ charts[id]=new Chart(document.getElementById(id),{type,data,options:Object.assign({responsive:true,maintainAspectRatio:false},opts||{})});}
+
+function sortBy(k){if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=(k==='w')?-1:1}render()}
+function drawTable(list){
+ const rows=list.map(s=>({s,w:weighted(s.scores)}));
+ rows.sort((a,b)=>{let x,y;if(sortKey==='w'){x=a.w==null?-1:a.w;y=b.w==null?-1:b.w}else{x=(a.s[sortKey]||'');y=(b.s[sortKey]||'')}
+  return x<y?-sortDir:x>y?sortDir:0});
+ const tb=document.getElementById('tbody');tb.innerHTML='';
+ document.getElementById('empty').textContent=list.length?'':'ไม่มีข้อมูลในมุมมองนี้ — ลองโหลดข้อมูลตัวอย่าง หรือนำเข้าไฟล์ .json';
+ rows.forEach(({s,w})=>{const lv=level(w);const tr=document.createElement('tr');tr.className='clk';
+  tr.onclick=()=>showStudent(s);
+  tr.innerHTML=`<td><b>${esc(s.name)}</b><div class="muted">${esc(s.id)}</div></td>
+   <td>${esc(s.school||'—')}<div class="muted">${esc(areaStr(s)||'—')}</div></td>
+   <td>${esc(s.cls||'—')}</td><td>${w==null?'<span class="muted">—</span>':'<b>'+w+'</b>'}</td>
+   <td>${lv?'<span class="lv">'+lv.r+' '+lv.n+'</span>':'<span class="lv none">—</span>'}</td>`;
+  tb.appendChild(tr);});
+}
+function showStudent(s){
+ const w=weighted(s.scores),lv=level(w);
+ let doms='';for(const k in W){const v=s.scores&&s.scores[k];
+  doms+=`<div class="dom"><div class="t"><span>${NAMES[k]}</span><span>${(v===''||v==null)?'—':v+'/100'}</span></div><div class="track"><div class="fill" style="width:${(v===''||v==null)?0:v}%"></div></div></div>`;}
+ const payload={n:s.name,c:s.cls,id:s.id,sch:s.school||'',ar:areaStr(s),dt:s.date,s:s.scores,w,lv};
+ let plink='';
+ if(w!=null){const code=encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(payload)))));
+  plink=`<a class="btn sm" target="_blank" href="BSI_Parent_View.html#d=${code}">เปิดหน้าผู้ปกครอง</a>`;}
+ document.getElementById('sdlg_b').innerHTML=`
+  <div style="font-weight:700;color:var(--brand);font-size:18px">${esc(s.name)}</div>
+  <div class="muted" style="margin-bottom:8px">${esc(s.school||'—')} · ${esc(s.cls||'')} · ${esc(areaStr(s)||'—')} · รหัส ${esc(s.id)}</div>
+  ${w!=null?`<div style="text-align:center;background:var(--paper);border-radius:12px;padding:10px;margin-bottom:8px"><div class="muted">คะแนนรวม</div><div style="font-size:30px;font-weight:700;color:var(--brand)">${w}<span style="font-size:14px;color:var(--grey)">/100</span></div>${lv?'<span class="lv">'+lv.r+' '+lv.n+'</span>':''}</div>`:'<div class="muted">ยังไม่มีผลทดสอบ</div>'}
+  ${doms}
+  <div style="margin-top:12px;text-align:right">${plink}</div>`;
+ document.getElementById('sdlg').showModal();
+}
+
+function SAMPLE(){
+ const prov=[['เชียงใหม่','เมืองเชียงใหม่','สุเทพ',['อนุบาลเชียงใหม่','ดาราวิทยาลัย']],
+   ['กรุงเทพมหานคร','จตุจักร','ลาดยาว',['สาธิตเกษตร','อนุบาลสุขใจ']],
+   ['ขอนแก่น','เมืองขอนแก่น','ในเมือง',['อนุบาลขอนแก่น','มณีอนุสรณ์']]];
+ const classes=['เตรียมอนุบาล','อนุบาล 1','อนุบาล 2','อนุบาล 3'];
+ const first=['พิมพ์','ปุณณ','ธีร','กานต์','ณดล','ปริม','อาริ','ภูมิ','พราว','ขวัญ','วิว','นด'];
+ const out=[];let id=1;
+ prov.forEach((P,pi)=>{const[province,amphoe,tambon,schools]=P;
+  schools.forEach(school=>{const per=4+Math.floor(Math.random()*3);
+   for(let i=0;i<per;i++){const base=55+pi*6+Math.random()*30;
+    const mk=()=>Math.max(20,Math.min(100,Math.round(base+(Math.random()*30-15))));
+    out.push({id:'BSI-'+String(id++).padStart(3,'0'),name:'เด็ก '+first[Math.floor(Math.random()*first.length)]+' '+school.slice(0,3),
+     school,province,amphoe,tambon,cls:classes[Math.floor(Math.random()*classes.length)],
+     parent:'',contact:'',date:'2026-06-1'+(1+Math.floor(Math.random()*8)),
+     scores:{th:mk(),en:mk(),ma:mk(),ef:mk(),mo:mk()}});}});});
+ return out;
+}
+
+function boot(){
+ document.getElementById('srcinfo').textContent = data.length? ('พบข้อมูลในเครื่อง '+data.length+' คน') : 'ยังไม่มีข้อมูลในเครื่อง — กด “โหลดข้อมูลตัวอย่าง” เพื่อชมการทำงาน';
+ if(!data.length)data=SAMPLE();
+ initFilters();render();
+}
+if(window.Chart)boot(); else window.addEventListener('load',boot);
+</script>
+</body></html>

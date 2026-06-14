@@ -53,27 +53,32 @@ footer{text-align:center;color:var(--grey);font-size:12px;margin-top:24px;border
 <h1>ระบบครู / เจ้าหน้าที่</h1><div class="sub">ลงทะเบียนนักเรียน · กรอกผลทดสอบ · สร้างลิงก์รายงานให้ผู้ปกครอง</div></div>
 <div class="wrap">
 
-<div class="warn"><b>ความเป็นส่วนตัว (PDPA):</b> ข้อมูลที่กรอกถูกเก็บใน<b>เบราว์เซอร์เครื่องนี้เท่านั้น</b> (ไม่ถูกส่งขึ้นอินเทอร์เน็ต/GitHub) · เมื่อกด “ลิงก์ผู้ปกครอง” ระบบจะฝังข้อมูลของเด็กไว้ในลิงก์เพื่อให้ผู้ปกครองเปิดดูได้ — ส่งลิงก์ผ่านช่องทางส่วนตัว (LINE/อีเมล) เท่านั้น · แนะนำกด “สำรองข้อมูล” เป็นระยะ</div>
+<div class="warn"><b>หมายเหตุ:</b> ข้อมูลที่กรอกถูกเก็บใน<b>เบราว์เซอร์เครื่องนี้</b> · เมื่อกด “ลิงก์ผู้ปกครอง” ระบบจะฝังข้อมูลของเด็กไว้ในลิงก์/QR ให้ผู้ปกครองเปิดดูได้ · แนะนำกด “สำรองข้อมูล (.json)” เป็นระยะ และใช้ “นำเข้าข้อมูล” เพื่อรวมข้อมูลเข้าหน้าผู้บริหาร</div>
 
 <div class="card">
 <h2>① ลงทะเบียนนักเรียน</h2>
 <div class="hint">กรอกข้อมูลแล้วกดเพิ่ม — รหัสนักเรียนใช้อ้างอิงและกันซ้ำ</div>
 <div class="grid">
 <div><label>ชื่อ-สกุลนักเรียน *</label><input id="r_name" placeholder="เช่น เด็กหญิงพิมพ์ลภัส ใจดี"></div>
-<div><label>รหัสนักเรียน *</label><input id="r_id" placeholder="เช่น LB-2569-001"></div>
+<div><label>รหัสนักเรียน *</label><input id="r_id" placeholder="เช่น BSI-2569-001"></div>
+<div><label>โรงเรียนต้นสังกัด *</label><input id="r_school" list="dl_school" placeholder="ชื่อโรงเรียนของนักเรียน"></div>
 <div><label>ระดับชั้น</label><select id="r_class"><option>เตรียมอนุบาล</option><option>อนุบาล 1</option><option>อนุบาล 2</option><option>อนุบาล 3</option></select></div>
+<div><label>ตำบล/แขวง</label><input id="r_tambon" list="dl_tambon" placeholder="ตำบล"></div>
+<div><label>อำเภอ/เขต</label><input id="r_amphoe" list="dl_amphoe" placeholder="อำเภอ"></div>
+<div><label>จังหวัด</label><input id="r_province" list="dl_province" placeholder="จังหวัด"></div>
 <div><label>ชื่อผู้ปกครอง</label><input id="r_parent" placeholder="ชื่อผู้ปกครอง"></div>
 <div><label>ช่องทางติดต่อผู้ปกครอง</label><input id="r_contact" placeholder="LINE / อีเมล / เบอร์โทร"></div>
 </div>
+<datalist id="dl_school"></datalist><datalist id="dl_tambon"></datalist><datalist id="dl_amphoe"></datalist><datalist id="dl_province"></datalist>
 <div style="margin-top:12px"><button class="btn" onclick="addStudent()">➕ เพิ่มนักเรียน</button></div>
 </div>
 
 <div class="card">
 <h2>② รายชื่อนักเรียน &amp; ผลทดสอบ</h2>
 <div class="hint">กด “กรอกคะแนน” เพื่อบันทึกผล 5 ด้าน · ระบบคิดคะแนนถ่วงน้ำหนักและระดับ Star Path ให้อัตโนมัติ</div>
-<input id="search" placeholder="🔍 ค้นหาชื่อ/รหัส/ชั้น" oninput="renderTable()" style="max-width:320px">
+<input id="search" placeholder="🔍 ค้นหาชื่อ/รหัส/โรงเรียน/พื้นที่/ชั้น" oninput="renderTable()" style="max-width:340px">
 <div style="overflow-x:auto"><table id="tbl"><thead><tr>
-<th>นักเรียน</th><th class="hide-sm">ชั้น</th><th>คะแนน</th><th>ระดับ Star Path</th><th>จัดการ</th>
+<th>นักเรียน</th><th class="hide-sm">โรงเรียน / พื้นที่</th><th class="hide-sm">ชั้น</th><th>คะแนน</th><th>ระดับ Star Path</th><th>จัดการ</th>
 </tr></thead><tbody id="tbody"></tbody></table></div>
 <div id="empty" class="empty">ยังไม่มีนักเรียน — เพิ่มในส่วน ① ด้านบน</div>
 <div class="toolbar">
@@ -132,21 +137,30 @@ function addStudent(){
  const name=val('r_name').trim(),id=val('r_id').trim();
  if(!name||!id){toast('กรอกชื่อและรหัสนักเรียน');return}
  if(students.some(s=>s.id===id)){toast('รหัสนี้มีอยู่แล้ว');return}
- students.push({id,name,cls:val('r_class'),parent:val('r_parent').trim(),contact:val('r_contact').trim(),scores:null,date:null});
- save();['r_name','r_id','r_parent','r_contact'].forEach(x=>document.getElementById(x).value='');
+ students.push({id,name,school:val('r_school').trim(),cls:val('r_class'),
+   tambon:val('r_tambon').trim(),amphoe:val('r_amphoe').trim(),province:val('r_province').trim(),
+   parent:val('r_parent').trim(),contact:val('r_contact').trim(),scores:null,date:null});
+ save();['r_name','r_id','r_school','r_tambon','r_amphoe','r_province','r_parent','r_contact'].forEach(x=>document.getElementById(x).value='');
  renderTable();toast('เพิ่มนักเรียนแล้ว');
+}
+function areaStr(s){return [s.tambon,s.amphoe,s.province].filter(Boolean).join(' · ')}
+function refreshDatalists(){
+ const fill=(id,key)=>{const vals=[...new Set(students.map(s=>s[key]).filter(Boolean))].sort();
+   document.getElementById(id).innerHTML=vals.map(v=>'<option value="'+esc(v)+'">').join('')};
+ fill('dl_school','school');fill('dl_tambon','tambon');fill('dl_amphoe','amphoe');fill('dl_province','province');
 }
 function val(id){return document.getElementById(id).value}
 
 function renderTable(){
  const q=val('search').trim().toLowerCase();
  const tb=document.getElementById('tbody');tb.innerHTML='';
- const list=students.filter(s=>!q||(s.name+s.id+s.cls).toLowerCase().includes(q));
+ const list=students.filter(s=>!q||(s.name+s.id+s.cls+(s.school||'')+(s.tambon||'')+(s.amphoe||'')+(s.province||'')).toLowerCase().includes(q));
  document.getElementById('empty').style.display=students.length?'none':'block';
  list.forEach(s=>{
   const w=weighted(s.scores),lv=level(w);
   const tr=document.createElement('tr');
   tr.innerHTML=`<td><b>${esc(s.name)}</b><div class="muted">${esc(s.id)}${s.parent?' · ผู้ปกครอง: '+esc(s.parent):''}</div></td>
+   <td class="hide-sm">${esc(s.school||'—')}<div class="muted">${esc(areaStr(s)||'—')}</div></td>
    <td class="hide-sm">${esc(s.cls)}</td>
    <td>${w==null?'<span class="muted">ยังไม่สอบ</span>':'<b>'+w+'</b>/100'}</td>
    <td>${lv?'<span class="lv">'+lv.r+' '+lv.n+'</span>':'<span class="lv none">—</span>'}</td>
@@ -157,6 +171,7 @@ function renderTable(){
    </div></td>`;
   tb.appendChild(tr);
  });
+ refreshDatalists();
 }
 function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
@@ -186,38 +201,8 @@ let lastQrUrl='';
 function parentLink(id){
  const s=students.find(x=>x.id===id);const w=weighted(s.scores),lv=level(w);
  if(w==null){toast('ยังไม่มีผลทดสอบ — กรอกคะแนนก่อน');return}
- const payload={n:s.name,c:s.cls,id:s.id,dt:s.date,s:s.scores,w,lv};
+ const payload={n:s.name,c:s.cls,id:s.id,sch:s.school||'',ar:areaStr(s),dt:s.date,s:s.scores,w,lv};
  const code=encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(payload)))));
  const url=location.href.replace(/BSI_Staff_Console\.html.*$/,'')+'BSI_Parent_View.html#d='+code;
  lastQrUrl=url;
- document.getElementById('qr_who').textContent=s.name+' · '+s.cls;
- document.getElementById('qr_url').value=url;
- document.getElementById('qr_open').href=url;
- const box=document.getElementById('qrbox');box.innerHTML='';
- if(window.QRCode){try{new QRCode(box,{text:url,width:224,height:224,colorDark:'#241B12',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});}catch(e){box.innerHTML='<div class="muted">สร้าง QR ไม่สำเร็จ — ใช้ปุ่มคัดลอกลิงก์</div>';}}
- else box.innerHTML='<div class="muted">โหลด QR ไม่สำเร็จ (ออฟไลน์?) — ใช้ปุ่มคัดลอกลิงก์ได้</div>';
- document.getElementById('qrdlg').showModal();
-}
-function copyQrUrl(){navigator.clipboard.writeText(lastQrUrl).then(()=>toast('คัดลอกลิงก์แล้ว ✓ ส่งทาง LINE/อีเมล'),()=>{document.getElementById('qr_url').select()})}
-function downloadQr(){
- const cv=document.querySelector('#qrbox canvas');const img=document.querySelector('#qrbox img');
- const data=cv?cv.toDataURL('image/png'):(img?img.src:'');
- if(!data){toast('ไม่พบ QR');return}
- const a=document.createElement('a');a.href=data;a.download='parent_qr.png';a.click();toast('บันทึก QR แล้ว');
-}
-
-function exportData(){
- const blob=new Blob([JSON.stringify(students,null,2)],{type:'application/json'});
- const a=document.createElement('a');a.href=URL.createObjectURL(blob);
- a.download='bsi_students_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('ดาวน์โหลดไฟล์สำรองแล้ว');
-}
-function importData(e){
- const f=e.target.files[0];if(!f)return;const r=new FileReader();
- r.onload=()=>{try{const d=JSON.parse(r.result);if(Array.isArray(d)){students=d;save();renderTable();toast('นำเข้าข้อมูลแล้ว')}else toast('ไฟล์ไม่ถูกต้อง')}catch(x){toast('อ่านไฟล์ไม่ได้')}};
- r.readAsText(f);e.target.value='';
-}
-function clearAll(){if(!confirm('ล้างข้อมูลนักเรียนทั้งหมดในเครื่องนี้?'))return;students=[];save();renderTable();toast('ล้างข้อมูลแล้ว')}
-
-renderTable();
-</script>
-</body></html>
+ document.getElementByI
