@@ -2,12 +2,12 @@
 <title>พอร์ทัลผู้ปกครอง (ตัวอย่าง) · BrightStar</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--berry:#B91D3A;--gold:#C9A961;--ink:#1A1410;--paper:#FBF6EC;--cream:#FFF8E1;--grey:#6B6057;--line:#EADFCB;--green:#2E7D32;--red:#C62828}
+:root{--berry:#9C7B3F;--gold:#C9A961;--ink:#241B12;--paper:#F6F1E6;--cream:#FBF7EE;--grey:#6E6353;--line:#EADFCB;--green:#2E7D32;--red:#C62828}
 *{box-sizing:border-box}body{margin:0;font-family:"Sarabun",sans-serif;color:var(--ink);background:#f2ecdf;line-height:1.55}
-.demo-bar{background:#1A1410;color:#ffe9b0;text-align:center;font-size:12px;padding:7px 12px}
+.demo-bar{background:#241B12;color:#ffe9b0;text-align:center;font-size:12px;padding:7px 12px}
 .shell{max-width:840px;margin:0 auto;padding:18px 16px 60px}
 .brand{text-align:center;margin:14px 0 10px}.brand .k{letter-spacing:4px;color:var(--gold);font-size:11px;font-weight:700}
-.bs-logo{width:78px;height:auto;display:block;margin:0 auto 2px}
+.bs-logo{width:118px;height:auto;display:block;margin:0 auto 2px;border-radius:14px}
 .brand h1{font-family:"Cormorant Garamond",serif;color:var(--berry);font-size:32px;margin:4px 0}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 10px 30px rgba(120,80,20,.08)}
 .hidden{display:none}
@@ -22,7 +22,7 @@ input{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;ma
 .err{color:var(--red);font-size:13px;margin-top:10px;min-height:18px}
 /* report */
 .top{display:flex;align-items:center;gap:14px;border-bottom:2px solid var(--gold);padding-bottom:14px;margin-bottom:8px}
-.avatar{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#b91d3a,#d8364f);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700}
+.avatar{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#9C7B3F,#B0883C);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700}
 .top .nm{font-weight:700;font-size:18px}.top small{color:var(--grey)}
 .meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--grey);margin:10px 0}
 .lvlrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:10px 0}
@@ -59,30 +59,10 @@ a.back{margin-left:auto;color:var(--berry);font-size:13px;cursor:pointer;text-de
 .csign{display:flex;gap:30px;justify-content:center;margin-top:16px;font-size:12px;color:var(--grey)}.csign div{border-top:1px solid var(--ink);padding-top:6px;width:160px}
 .muted{color:var(--grey);font-size:12px}
 @media print{.demo-bar,.row,.back{display:none}.card{box-shadow:none;border:0}body{background:#fff}}
-</style></head><body>
+</style></head><body><div style="background:#241B12;color:#FBF7EE;font-family:'Sarabun',sans-serif;font-size:13px;padding:8px 16px;display:flex;gap:16px;align-items:center;border-bottom:2px solid #C9A961;flex-wrap:wrap"><a href="index.html" style="color:#C9A961;text-decoration:none;font-weight:700;letter-spacing:.5px">★ BrightStar</a><a href="index.html" style="color:#FBF7EE;text-decoration:none">หน้าแรก</a><a href="BSI_Test_Hub.html" style="color:#FBF7EE;text-decoration:none">ศูนย์ทดสอบ</a><a href="parent_portal_demo.html" style="color:#FBF7EE;text-decoration:none">พอร์ทัลผู้ปกครอง</a></div>
 <div class="demo-bar">ตัวอย่าง (PROTOTYPE) · การล็อกอิน user/password นี้เป็นการสาธิตหน้าตา (ตรวจฝั่งเว็บ) ไม่ปลอดภัยสำหรับข้อมูลจริง — ระบบจริงต้องมี backend หรือใช้ AppSheet เซ็นอินอีเมล</div>
 <div class="shell">
- <div class="brand"><svg class="bs-logo" viewBox="0 0 120 152" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BrightStar logo">
-<defs><linearGradient id="bsg" x1="0" y1="0" x2="0.9" y2="1">
-<stop offset="0" stop-color="#EAD79E"/><stop offset="0.5" stop-color="#C9A961"/><stop offset="1" stop-color="#A97E36"/></linearGradient></defs>
-<g fill="none" stroke="url(#bsg)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-<polygon points="60.0,9.0 63.6,19.0 74.3,19.4 65.9,25.9 68.8,36.1 60.0,30.2 51.2,36.1 54.1,25.9 45.7,19.4 56.4,19.0" fill="url(#bsg)" stroke="url(#bsg)" stroke-width="1.2"/>
-<line x1="60" y1="6" x2="60" y2="1.5"/><line x1="47" y1="11" x2="43.5" y2="7"/><line x1="73" y1="11" x2="76.5" y2="7"/>
-<path d="M60,40 C60,44 60,46 60,49"/>
-<path d="M40,90 C34,68 42,52 60,50 C78,52 86,68 80,90 C78,99 71,103 70,109 L50,109 C49,103 42,99 40,90 Z"/>
-<path d="M60,51 C60,58 60,66 60,73" stroke-width="1.5"/>
-<path d="M44,64 q1,-7 6,-6 q1,-6 6,-4" stroke-width="1.6"/>
-<path d="M76,64 q-1,-7 -6,-6 q-1,-6 -6,-4" stroke-width="1.6"/>
-<path d="M48,60 q5,-4 10,-1" stroke-width="1.4"/>
-<path d="M62,59 q5,-4 10,0" stroke-width="1.4"/>
-<path d="M46,68 q4,-3 8,-1" stroke-width="1.4"/>
-<path d="M66,68 q4,-3 8,-1" stroke-width="1.4"/>
-<path d="M50,79 q3.5,-3.5 7,0"/>
-<path d="M63,79 q3.5,-3.5 7,0"/>
-<path d="M52,86 q8,7 16,0"/>
-<path d="M48,109 q12,5 24,0"/><line x1="51" y1="114" x2="69" y2="114"/><line x1="53.5" y1="118.5" x2="66.5" y2="118.5"/>
-<path d="M57,123 q3,3.5 6,0"/>
-</g></svg><div class="k">BRIGHTSTAR ASSESSMENT INSTITUTE</div><h1>พอร์ทัลผู้ปกครอง</h1></div>
+ <div class="brand"><img class="bs-logo" src="logo.png" alt="BrightStar Assessment Institute logo"><div class="k">BRIGHTSTAR ASSESSMENT INSTITUTE</div><h1>พอร์ทัลผู้ปกครอง</h1></div>
 
  <div id="login" class="card login">
    <h2>เข้าสู่ระบบ</h2><p>กรอกชื่อผู้ใช้และรหัสผ่านที่ศูนย์มอบให้ เพื่อดูผลและเกียรติบัตรของบุตรหลาน</p>
@@ -145,8 +125,8 @@ function radar(s){const keys=Object.keys(s),n=keys.length,cx=135,cy=130,R=92;
  let grid='';for(let g=1;g<=4;g++){let pts='';for(let i=0;i<n;i++){const ang=-Math.PI/2+i*2*Math.PI/n;pts+=(cx+Math.cos(ang)*R*g/4)+','+(cy+Math.sin(ang)*R*g/4)+' ';}grid+=`<polygon points="${pts}" fill="none" stroke="#e7ddcb"/>`;}
  let axes='',labels='',pts='';for(let i=0;i<n;i++){const ang=-Math.PI/2+i*2*Math.PI/n;const x=cx+Math.cos(ang)*R,y=cy+Math.sin(ang)*R;axes+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#e7ddcb"/>`;
   const v=s[keys[i]]/100;pts+=(cx+Math.cos(ang)*R*v)+','+(cy+Math.sin(ang)*R*v)+' ';
-  const lx=cx+Math.cos(ang)*(R+16),ly=cy+Math.sin(ang)*(R+16);labels+=`<text x="${lx}" y="${ly}" font-size="10" fill="#6B6057" text-anchor="middle">${keys[i]}</text>`;}
- return `<svg width="270" height="260" viewBox="0 0 270 260">${grid}${axes}<polygon points="${pts}" fill="rgba(185,29,58,.22)" stroke="#B91D3A" stroke-width="2"/>${labels}</svg>`;}
+  const lx=cx+Math.cos(ang)*(R+16),ly=cy+Math.sin(ang)*(R+16);labels+=`<text x="${lx}" y="${ly}" font-size="10" fill="#6E6353" text-anchor="middle">${keys[i]}</text>`;}
+ return `<svg width="270" height="260" viewBox="0 0 270 260">${grid}${axes}<polygon points="${pts}" fill="rgba(185,29,58,.22)" stroke="#9C7B3F" stroke-width="2"/>${labels}</svg>`;}
 function render(){const k=kids[cur];document.getElementById('cname').textContent=k.name;document.getElementById('cnick').textContent="ชื่อเล่น: "+k.nick;document.getElementById('ava').textContent=k.init;
  document.getElementById('meta').innerHTML=`<span>รหัสนักเรียน: <b>${k.id}</b></span><span>ชั้น: ${k.cls}</span><span>เทอม: ${k.term}</span><span>ผู้ประเมิน: ${k.exm}</span><span>วันที่: ${k.date}</span>`;
  const a=wavg(k.s),L=lvl(a);document.getElementById('lvl').textContent="ระดับ "+["","I","II","III","IV","V","VI","VII"][L[4]]+" · "+L[2]+" ("+L[3]+")";document.getElementById('avg').textContent=a;
