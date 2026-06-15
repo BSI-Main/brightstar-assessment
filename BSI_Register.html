@@ -1,0 +1,205 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>สมัครสอบ / จองรอบ · BrightStar Assessment Institute</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--berry:#9C7B3F;--gold:#C9A961;--deep:#5C3A22;--ink:#241B12;--paper:#F6F1E6;--cream:#FBF7EE;--grey:#6E6353;--line:#EADFCB;--green:#2E7D32}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Sarabun",sans-serif;color:var(--ink);background:var(--cream);line-height:1.55}
+.bar{background:#241B12;color:#FBF7EE;font-size:13px;padding:8px 16px;display:flex;gap:16px;align-items:center;border-bottom:2px solid #C9A961;flex-wrap:wrap}
+.bar a{color:#FBF7EE;text-decoration:none}.bar a.h{color:#C9A961;font-weight:700}
+.hero{position:relative;background:radial-gradient(1000px 360px at 50% -120px,#fff6e0,transparent),linear-gradient(160deg,#5C3A22,#9C7B3F 60%,#B0883C);color:#fff;text-align:center;padding:46px 18px 40px;border-bottom:3px solid var(--gold)}
+.hero img{width:84px;background:#FFFDF7;border-radius:16px;padding:7px}
+.hero .k{letter-spacing:4px;font-size:11px;font-weight:700;color:#ffe9b0;margin-top:8px}
+.hero h1{font-family:"Cormorant Garamond",serif;font-size:38px;margin:6px 0 2px}
+.hero p{font-size:15px;color:#f3e7cd;margin:4px 0 0}
+.cta{display:inline-block;margin-top:16px;background:var(--gold);color:#241B12;font-weight:700;text-decoration:none;padding:12px 26px;border-radius:30px;font-size:16px}
+.wrap{max-width:920px;margin:0 auto;padding:26px 18px 90px}
+h2{font-family:"Cormorant Garamond",serif;color:var(--berry);font-size:25px;margin:30px 0 12px;border-left:5px solid var(--gold);padding-left:12px}
+.pk{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 4px 14px rgba(120,80,20,.06)}
+.card.best{border:2px solid var(--gold)}
+.card .nm{font-weight:700;color:var(--berry);font-size:16px}
+.card .pr{font-size:30px;font-weight:700;color:var(--deep);margin:4px 0;line-height:1}.card .pr small{font-size:13px;color:var(--grey);font-weight:400}
+.card .d{font-size:13px;color:var(--ink);min-height:38px}
+.rounds{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.round{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:12px 14px;font-size:14px}
+.round b{color:var(--deep)}
+form{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:8px}
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.fld{flex:1;min-width:200px;display:flex;flex-direction:column;gap:4px}
+label{font-size:13.5px;font-weight:600;color:var(--ink)}
+input,select{padding:10px;border:1px solid var(--line);border-radius:9px;font-size:15px;font-family:inherit;background:#fff}
+.seg{display:flex;gap:8px}.seg label{flex:1;border:1.5px solid var(--line);border-radius:10px;padding:12px;text-align:center;cursor:pointer;font-weight:700;color:var(--grey)}
+.seg input{display:none}.seg input:checked+span{color:var(--berry)}
+.seg label:has(input:checked){border-color:var(--gold);background:var(--paper);color:var(--berry)}
+.hide{display:none!important}
+.btn{background:var(--berry);color:#fff;border:0;border-radius:26px;padding:13px 28px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--deep)}
+.btn.alt{background:transparent;color:var(--berry);border:1.5px solid var(--berry)}
+.total{font-size:15px;color:var(--ink);margin:6px 0}.total b{color:var(--berry);font-size:22px}
+#result{margin-top:18px}
+.summary{background:var(--paper);border:1px solid var(--gold);border-radius:14px;padding:18px}
+.summary .ref{font-size:13px;color:var(--grey)}.summary .ref b{color:var(--deep);font-size:18px;letter-spacing:1px}
+.paybox{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+#qr{background:#fff;padding:8px;border-radius:8px}
+.payinfo{flex:1;min-width:200px;font-size:14px}
+.note{background:#fff;border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--grey);margin-top:10px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+#bsiHome{position:fixed;left:16px;bottom:16px;z-index:99999;background:#5C3A22;color:#FBF7EE;text-decoration:none;font-weight:700;font-size:14px;padding:10px 16px;border-radius:30px;box-shadow:0 4px 14px rgba(0,0,0,.28);border:1.5px solid #C9A961}
+footer{text-align:center;color:var(--grey);font-size:12px;margin-top:30px;border-top:1px solid var(--line);padding-top:16px}
+@media print{#bsiHome{display:none!important}}
+</style></head><body>
+<div class="bar"><a class="h" href="index.html">★ BrightStar</a><a href="index.html">หน้าแรก</a><a href="BSI_Promo_Parent.html">แพ็กเกจผู้ปกครอง</a><a href="BSI_Promo_School.html">แพ็กเกจโรงเรียน</a></div>
+<div class="hero">
+  <img src="logo.png" alt="logo"><div class="k">BRIGHTSTAR ASSESSMENT INSTITUTE</div>
+  <h1>สมัครสอบ / จองรอบประเมิน</h1>
+  <p>สถาบันประเมินสมรรถนะปฐมวัยกลาง · วัด 5 สมรรถนะ · จัดระดับ 7 ดาว · รับรองวิชาการโดยมหาวิทยาลัยวงษ์ชวลิตกุล</p>
+  <a class="cta" href="#form">เริ่มสมัคร / จองรอบ →</a>
+</div>
+<div class="wrap">
+
+  <h2>แพ็กเกจผู้ปกครอง (รายบุคคล)</h2>
+  <div class="pk">
+    <div class="card"><div class="nm">มาตรฐาน (เดี่ยว)</div><div class="pr">690<small> ฿/คน</small></div><div class="d">ครบ 5 ห้อง + รายงานวินิจฉัย + เกียรติบัตร</div></div>
+    <div class="card best"><div class="nm">คู่/พี่น้อง/กลุ่ม</div><div class="pr">590<small> ฿/คน</small></div><div class="d">สิทธิเท่ามาตรฐาน (ตั้งแต่ 2 คน)</div></div>
+    <div class="card"><div class="nm">พรีเมียม</div><div class="pr">1,290<small> ฿</small></div><div class="d">+ รายงานเชิงลึก + ปรึกษาผู้เชี่ยวชาญ 30 นาที</div></div>
+  </div>
+  <p style="color:var(--grey);font-size:13.5px;margin-top:8px">โปรเปิดสนามโคราช (Early Bird) มาตรฐานเหลือ <b>590 ฿/คน</b> · โรงเรียนดูราคาขั้นบันไดที่ <a href="BSI_Promo_School.html">แพ็กเกจโรงเรียน</a></p>
+
+  <h2>รอบสอบที่เปิดรับ</h2>
+  <div class="rounds" id="rounds"></div>
+
+  <h2 id="form">แบบฟอร์มสมัคร</h2>
+  <form onsubmit="return false">
+    <div class="fld" style="margin-bottom:14px"><label>สมัครในนาม</label>
+      <div class="seg">
+        <label><input type="radio" name="who" value="parent" checked onchange="toggleWho()"><span>ผู้ปกครอง (รายบุคคล)</span></label>
+        <label><input type="radio" name="who" value="school" onchange="toggleWho()"><span>โรงเรียน (หมู่คณะ)</span></label>
+      </div>
+    </div>
+
+    <div class="row"><div class="fld"><label>ชื่อผู้ติดต่อ *</label><input id="contact" placeholder="ชื่อ-นามสกุล"></div>
+      <div class="fld"><label>เบอร์โทร *</label><input id="phone" placeholder="08x-xxx-xxxx"></div>
+      <div class="fld"><label>LINE / อีเมล</label><input id="line" placeholder="LINE ID หรืออีเมล"></div></div>
+
+    <!-- parent fields -->
+    <div id="pFields">
+      <div class="row"><div class="fld"><label>ชื่อบุตรหลาน</label><input id="childName" placeholder="ชื่อเด็ก"></div>
+        <div class="fld"><label>ระดับชั้น</label><select id="childGrade"><option>อนุบาล 1</option><option selected>อนุบาล 2</option><option>อนุบาล 3</option><option>ประถม 1</option></select></div></div>
+      <div class="row"><div class="fld"><label>แพ็กเกจ</label><select id="pkg" onchange="calc()">
+            <option value="690">มาตรฐาน (เดี่ยว) 690 ฿</option>
+            <option value="590">Early Bird / คู่-พี่น้อง 590 ฿</option>
+            <option value="1290">พรีเมียม 1,290 ฿</option></select></div>
+        <div class="fld"><label>จำนวนเด็ก</label><input id="qty" type="number" min="1" value="1" oninput="calc()"></div></div>
+    </div>
+
+    <!-- school fields -->
+    <div id="sFields" class="hide">
+      <div class="row"><div class="fld"><label>ชื่อโรงเรียน</label><input id="schName" placeholder="โรงเรียน..."></div>
+        <div class="fld"><label>จังหวัด</label><input id="schProv" placeholder="จังหวัด"></div></div>
+      <div class="row"><div class="fld"><label>ระดับแพ็กเกจ</label><select id="schTier"><option>Lite (วัด 1 ครั้ง/ปี)</option><option selected>Standard (วัด 2 ครั้ง/ปี)</option><option>Partner/Premium</option></select></div>
+        <div class="fld"><label>จำนวนนักเรียน (ประมาณ)</label><input id="schQty" type="number" min="1" value="50"></div></div>
+    </div>
+
+    <div class="row"><div class="fld"><label>เลือกรอบสอบ</label><select id="round"></select></div></div>
+
+    <div class="total" id="totalLine"></div>
+    <button class="btn" onclick="submitForm()">ยืนยันการสมัคร →</button>
+  </form>
+
+  <div id="result"></div>
+
+  <footer>BrightStar Assessment Institute · Star Path 7 ระดับ · เปิดรับนักเรียนจากทุกโรงเรียน<br>หลังโอนเงิน กรุณาแนบสลิปทาง LINE พร้อมรหัสการสมัคร เจ้าหน้าที่จะยืนยันรอบสอบให้</footer>
+</div>
+<a id="bsiHome" href="index.html">← หน้าแรก</a>
+
+<script>
+/* ===== ปรับค่าตรงนี้ให้เป็นของสถาบัน ===== */
+var PROMPTPAY_ID = "0812345678";      // เบอร์พร้อมเพย์ หรือเลขบัตร 13 หลักของสถาบัน
+var LINE_OA_URL  = "https://line.me/R/ti/p/@brightstar"; // ลิงก์ LINE OA จริง
+/* ======================================== */
+
+var ROUNDS = [
+  "รอบที่ 1 · 26 ก.ค. 2569 (สนามกลางโคราช)",
+  "รอบที่ 2 · 23 ส.ค. 2569 (สนามกลางโคราช)",
+  "รอบที่ 3 · 27 ก.ย. 2569 (สนามกลางโคราช)",
+  "นัดหมายเฉพาะกลุ่ม/โรงเรียน (เจ้าหน้าที่ติดต่อกลับ)"
+];
+(function(){
+  var r=document.getElementById('rounds'), sel=document.getElementById('round'), h='';
+  ROUNDS.forEach(function(x,i){ h+='<div class="round"><b>'+x.split(' · ')[0]+'</b><br>'+(x.split(' · ')[1]||'')+'</div>';
+    var o=document.createElement('option');o.text=x;sel.add(o); });
+  r.innerHTML=h; calc();
+})();
+function toggleWho(){
+  var school=document.querySelector('input[name=who]:checked').value==='school';
+  document.getElementById('sFields').classList.toggle('hide',!school);
+  document.getElementById('pFields').classList.toggle('hide',school);
+  calc();
+}
+function calc(){
+  var who=document.querySelector('input[name=who]:checked').value, t=document.getElementById('totalLine');
+  if(who==='parent'){
+    var price=+document.getElementById('pkg').value, qty=Math.max(1,+document.getElementById('qty').value||1);
+    if(price===690 && qty>=2) price=590; // คู่/พี่น้อง อัตโนมัติ
+    var total=price*qty;
+    t.dataset.amount=total;
+    t.innerHTML='ยอดชำระโดยประมาณ: <b>'+total.toLocaleString()+' ฿</b> <span style="color:var(--grey);font-size:13px">('+price+' ฿ × '+qty+' คน)</span>';
+  } else {
+    t.dataset.amount='';
+    t.innerHTML='<span style="color:var(--grey);font-size:14px">โรงเรียน: เจ้าหน้าที่จะคำนวณราคาตามจำนวน/ระดับ แล้วส่งใบเสนอราคาให้ (ราคาขั้นบันได 290–790 ฿/คน)</span>';
+  }
+}
+function tlv(id,v){var l=(''+v.length).padStart(2,'0');return id+l+v;}
+function crc16(s){var c=0xFFFF;for(var i=0;i<s.length;i++){c^=s.charCodeAt(i)<<8;for(var j=0;j<8;j++){c=(c&0x8000)?((c<<1)^0x1021):(c<<1);c&=0xFFFF;}}return c.toString(16).toUpperCase().padStart(4,'0');}
+function ppPayload(id,amount){
+  id=(''+id).replace(/[^0-9]/g,''); var target;
+  if(id.length>=13) target=tlv('02',id.slice(0,13)); else target=tlv('01','0066'+id.replace(/^0/,''));
+  var m=tlv('00','A000000677010111')+target, p='';
+  p+=tlv('00','01'); p+=tlv('01',amount?'12':'11'); p+=tlv('29',m); p+=tlv('53','764');
+  if(amount) p+=tlv('54',Number(amount).toFixed(2));
+  p+=tlv('58','TH'); p+='6304'+crc16(p+'6304'); return p;
+}
+function ref(){var y=2569;return 'BSI-'+y+'-'+Math.random().toString(36).slice(2,7).toUpperCase();}
+function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function submitForm(){
+  var who=document.querySelector('input[name=who]:checked').value;
+  var contact=document.getElementById('contact').value.trim(), phone=document.getElementById('phone').value.trim();
+  if(!contact||!phone){alert('กรุณากรอกชื่อผู้ติดต่อและเบอร์โทร');return;}
+  var line=document.getElementById('line').value.trim(), round=document.getElementById('round').value, code=ref();
+  var lines=['รหัสการสมัคร: '+code,'ผู้ติดต่อ: '+contact,'เบอร์: '+phone];
+  if(line) lines.push('LINE/อีเมล: '+line);
+  var amount='';
+  if(who==='parent'){
+    lines.push('ประเภท: ผู้ปกครอง (รายบุคคล)');
+    lines.push('บุตรหลาน: '+(document.getElementById('childName').value||'-')+' · '+document.getElementById('childGrade').value);
+    var pk=document.getElementById('pkg').selectedOptions[0].text, qty=document.getElementById('qty').value;
+    lines.push('แพ็กเกจ: '+pk+' × '+qty+' คน');
+    amount=document.getElementById('totalLine').dataset.amount||'';
+    if(amount) lines.push('ยอดชำระ: '+(+amount).toLocaleString()+' ฿');
+  } else {
+    lines.push('ประเภท: โรงเรียน (หมู่คณะ)');
+    lines.push('โรงเรียน: '+(document.getElementById('schName').value||'-')+' · จ.'+(document.getElementById('schProv').value||'-'));
+    lines.push('แพ็กเกจ: '+document.getElementById('schTier').value+' · ~'+document.getElementById('schQty').value+' คน');
+  }
+  lines.push('รอบสอบ: '+round);
+  var msg=lines.join('\n');
+  var pay='';
+  if(who==='parent' && amount){
+    pay='<div class="paybox"><div id="qr"></div><div class="payinfo"><b>ชำระผ่าน PromptPay</b><br>สแกน QR นี้ด้วยแอปธนาคาร ยอด <b>'+(+amount).toLocaleString()+' ฿</b><br><span style="color:var(--grey)">บัญชีสถาบัน (พร้อมเพย์): '+esc(PROMPTPAY_ID)+'</span></div></div>'
+      +'<div class="note">หลังโอนแล้ว แนบสลิป + แจ้ง<b> รหัส '+code+' </b>ทาง LINE เพื่อยืนยันที่นั่งรอบสอบ</div>';
+  } else {
+    pay='<div class="note">ทีมงานจะติดต่อกลับเพื่อยืนยันราคาและรอบสอบ พร้อมส่งใบเสนอราคา/ใบแจ้งชำระให้ — อ้างอิง<b> รหัส '+code+'</b></div>';
+  }
+  var html='<div class="summary"><div class="ref">รหัสการสมัครของคุณ<br><b>'+code+'</b></div>'
+    +'<pre style="white-space:pre-wrap;font-family:inherit;font-size:14px;margin:12px 0 0">'+esc(msg)+'</pre>'
+    +pay
+    +'<div class="btns"><a class="btn" href="'+LINE_OA_URL+'" target="_blank" rel="noopener">ส่งข้อมูลทาง LINE</a>'
+    +'<button class="btn alt" onclick="copyMsg(this)" data-msg="'+esc(msg).replace(/"/g,"&quot;")+'">คัดลอกข้อมูลการสมัคร</button>'
+    +'<button class="btn alt" onclick="window.print()">พิมพ์/บันทึก</button></div></div>';
+  var res=document.getElementById('result'); res.innerHTML=html; res.scrollIntoView({behavior:'smooth'});
+  if(who==='parent' && amount){ new QRCode(document.getElementById('qr'),{text:ppPayload(PROMPTPAY_ID,amount),width:190,height:190,correctLevel:QRCode.CorrectLevel.M}); }
+}
+function copyMsg(b){var t=b.getAttribute('data-msg').replace(/&quot;/g,'"').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');navigator.clipboard.writeText(t).then(function(){b.textContent='คัดลอกแล้ว ✓';});}
+</script>
+</body></html>
