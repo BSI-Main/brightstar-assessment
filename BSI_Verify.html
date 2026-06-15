@@ -1,0 +1,79 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ตรวจสอบเกียรติบัตร · BrightStar Assessment Institute</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--berry:#9C7B3F;--gold:#C9A961;--deep:#5C3A22;--ink:#241B12;--paper:#F6F1E6;--cream:#FBF7EE;--grey:#6E6353;--line:#EADFCB;--green:#2E7D32;--red:#B5483B}
+*{box-sizing:border-box}body{margin:0;font-family:"Sarabun",sans-serif;color:var(--ink);background:var(--cream);line-height:1.55}
+.bar{background:#241B12;color:#FBF7EE;font-size:13px;padding:8px 16px;display:flex;gap:16px;align-items:center;border-bottom:2px solid #C9A961;flex-wrap:wrap}
+.bar a{color:#FBF7EE;text-decoration:none}.bar a.h{color:#C9A961;font-weight:700}
+.hero{background:linear-gradient(160deg,#5C3A22,#9C7B3F 130%);color:#fff;text-align:center;padding:34px 18px 28px;border-bottom:3px solid var(--gold)}
+.hero img{width:74px;background:#FFFDF7;border-radius:14px;padding:6px}
+.hero .k{letter-spacing:4px;font-size:11px;font-weight:700;color:#ffe9b0;margin-top:6px}
+.hero h1{font-family:"Cormorant Garamond",serif;font-size:32px;margin:4px 0 0}
+.hero p{font-size:14px;color:#f3e7cd;margin:4px 0 0}
+.wrap{max-width:620px;margin:0 auto;padding:26px 18px 90px}
+.search{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.search .fld{flex:1;min-width:200px;display:flex;flex-direction:column;gap:5px}
+label{font-size:13.5px;font-weight:600}
+input{padding:11px;border:1px solid var(--line);border-radius:9px;font-size:16px;font-family:inherit;letter-spacing:1px}
+.btn{background:var(--berry);color:#fff;border:0;border-radius:24px;padding:12px 24px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--deep)}
+.result{margin-top:18px}
+.vcard{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 6px 18px rgba(120,80,20,.08)}
+.vtop{padding:16px 20px;color:#fff;display:flex;align-items:center;gap:12px;font-weight:700;font-size:18px}
+.vtop.ok{background:var(--green)}.vtop.bad{background:var(--red)}
+.vbody{padding:18px 20px}
+.who{font-size:22px;font-weight:700;color:var(--berry)}
+.meta{color:var(--grey);font-size:13.5px;margin-top:2px}
+.lvl{display:inline-block;background:linear-gradient(135deg,var(--gold),#E4D4A8);color:#241B12;font-weight:700;border-radius:24px;padding:6px 18px;font-size:16px;margin-top:12px}
+.stars{font-size:20px;letter-spacing:3px;color:var(--gold);margin-top:8px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-top:14px;font-size:14px}
+.grid div b{color:var(--deep)}
+.note{background:var(--paper);border-left:4px solid var(--gold);border-radius:8px;padding:11px 14px;font-size:13px;color:var(--grey);margin-top:18px}
+#bsiHome{position:fixed;left:16px;bottom:16px;z-index:99999;background:#5C3A22;color:#FBF7EE;text-decoration:none;font-weight:700;font-size:14px;padding:10px 16px;border-radius:30px;box-shadow:0 4px 14px rgba(0,0,0,.28);border:1.5px solid #C9A961}
+footer{text-align:center;color:var(--grey);font-size:12px;margin-top:26px;border-top:1px solid var(--line);padding-top:14px}
+@media print{#bsiHome{display:none!important}}
+</style></head><body>
+<div class="bar"><a class="h" href="index.html">★ BrightStar</a><a href="index.html">หน้าแรก</a><a href="BSI_Register.html">สมัครสอบ</a></div>
+<div class="hero"><img src="logo.png" alt="logo"><div class="k">BRIGHTSTAR ASSESSMENT INSTITUTE</div>
+  <h1>ตรวจสอบเกียรติบัตร</h1><p>ยืนยันความถูกต้องของเกียรติบัตร/ผลการประเมินที่ออกโดยสถาบัน</p></div>
+<div class="wrap">
+  <div class="search">
+    <div class="fld"><label>กรอกรหัสเกียรติบัตร</label><input id="code" placeholder="เช่น BSI-2569-0001" autocomplete="off"></div>
+    <button class="btn" onclick="lookup()">ตรวจสอบ</button>
+  </div>
+  <div class="result" id="result"></div>
+  <div class="note">วิธีตรวจสอบ: สแกน QR บนเกียรติบัตร หรือกรอกรหัสที่มุมล่างของเอกสาร · ระบบจะยืนยันว่าเอกสารออกโดยสถาบันจริงและแสดงผลที่บันทึกไว้ · หากผลไม่ตรงกับเอกสารในมือ โปรดติดต่อสถาบัน</div>
+  <footer>BrightStar Assessment Institute · ระบบตรวจสอบความถูกต้องเอกสาร</footer>
+</div>
+<a id="bsiHome" href="index.html">← หน้าแรก</a>
+<script>
+var ROMAN={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7};
+/* ทะเบียนตัวอย่าง (เพิ่ม/แก้รายการจริงได้ที่นี่ หรือใช้ลิงก์ #d= ที่เข้ารหัสในตัว) */
+var REGISTRY={
+ "BSI-2569-0001":{n:"เด็กหญิง ตัวอย่าง ดีเด่น",sch:"",ar:"จังหวัดนครราชสีมา",c:"อนุบาล 2",dt:"1 มิถุนายน 2569",w:70.0,lv:{r:"IV",n:"ดาวเด่น"}}
+};
+function decodePayload(){try{var h=location.hash.match(/d=([^&]+)/);if(!h)return null;return JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(h[1])))));}catch(e){return null;}}
+function stars(r){var n=ROMAN[r]||0;return "★".repeat(n)+"☆".repeat(7-n);}
+function esc(s){return (''+(s==null?'':s)).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function render(d,code,verified){
+  var res=document.getElementById('result');
+  if(!d){res.innerHTML='<div class="vcard"><div class="vtop bad">✕ ไม่พบข้อมูลเกียรติบัตรนี้</div><div class="vbody">ไม่พบรหัส <b>'+esc(code)+'</b> ในระบบ — โปรดตรวจสอบรหัสอีกครั้ง หรือติดต่อสถาบัน</div></div>';return;}
+  var meta=[]; if(d.sch)meta.push(esc(d.sch)); if(d.c)meta.push('ระดับชั้น '+esc(d.c)); if(d.ar)meta.push(esc(d.ar));
+  res.innerHTML='<div class="vcard"><div class="vtop ok">✓ เอกสารนี้ออกโดยสถาบันจริง</div><div class="vbody">'
+    +'<div class="who">'+esc(d.n)+'</div><div class="meta">'+meta.join(' · ')+'</div>'
+    +'<div class="stars">'+stars(d.lv&&d.lv.r)+'</div>'
+    +'<div class="lvl">ระดับ '+esc(d.lv&&d.lv.r)+' · '+esc(d.lv&&d.lv.n)+'</div>'
+    +'<div class="grid"><div><b>คะแนนรวม:</b> '+esc(d.w)+' / 100</div><div><b>วันที่ประเมิน:</b> '+esc(d.dt)+'</div>'
+    +'<div><b>รหัสเอกสาร:</b> '+esc(code||d.id)+'</div><div><b>ผู้ออก:</b> BrightStar Assessment Institute</div></div>'
+    +'</div></div>';
+}
+function lookup(){var code=document.getElementById('code').value.trim().toUpperCase();if(!code){return;} location.hash=''; render(REGISTRY[code]||null, code);}
+(function(){
+  var d=decodePayload();
+  if(d){ document.getElementById('code').value=d.id||''; render(d, d.id, true); return; }
+  var c=(location.search.match(/c=([^&]+)/)||[])[1];
+  if(c){ c=decodeURIComponent(c).toUpperCase(); document.getElementById('code').value=c; render(REGISTRY[c]||null, c); }
+})();
+</script>
+</body></html>
