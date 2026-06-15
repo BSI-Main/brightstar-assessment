@@ -42,6 +42,18 @@ dialog::backdrop{background:rgba(40,27,18,.45)}
 .dom{margin:9px 0}.dom .t{display:flex;justify-content:space-between;font-size:13px}.track{height:12px;background:var(--paper);border-radius:8px;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--brand))}
 .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#241B12;color:#fff;padding:10px 18px;border-radius:22px;font-size:13.5px;opacity:0;transition:.25s;z-index:99;pointer-events:none}.toast.show{opacity:1}
 footer{text-align:center;color:var(--grey);font-size:12px;margin-top:22px;border-top:1px solid var(--line);padding-top:14px}
+.crumb{font-size:13.5px;margin-bottom:10px;color:var(--grey)}
+.crumb a{color:var(--brand);cursor:pointer;font-weight:600}.crumb a:hover{text-decoration:underline}
+.crumb .sep{margin:0 6px;color:var(--line)}
+.heatwrap{display:flex;flex-wrap:wrap;gap:9px}
+.tile{flex:1 1 132px;min-width:132px;max-width:230px;border-radius:13px;padding:11px 13px;cursor:pointer;color:#241B12;border:1px solid rgba(0,0,0,.10);transition:.12s}
+.tile:hover{transform:translateY(-2px);box-shadow:0 7px 18px rgba(0,0,0,.14)}
+.tile .nm{font-weight:700;font-size:13.5px;line-height:1.25}
+.tile .av{font-size:25px;font-weight:700;line-height:1}
+.tile .ct{font-size:11.5px;opacity:.85}
+.tile.gray{background:#EDE7DC;color:var(--grey)}
+.heatlegend{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--grey);margin-top:10px;flex-wrap:wrap}
+.heatlegend .sw{width:24px;height:13px;border-radius:3px}
 </style></head><body>
 <div class="bar"><a class="h" href="index.html">★ BrightStar</a><a href="index.html">หน้าแรก</a><a href="BSI_Staff_Console.html">ระบบครู</a><a href="BSI_Test_Hub.html">ศูนย์ทดสอบ</a></div>
 <div class="hero"><img src="logo.png" alt="logo"><div class="k">BRIGHTSTAR ASSESSMENT INSTITUTE</div>
@@ -70,6 +82,12 @@ footer{text-align:center;color:var(--grey);font-size:12px;margin-top:22px;border
 </div>
 
 <div class="card"><div class="kpis" id="kpis"></div></div>
+
+<div class="card"><h2>แผนที่ความร้อนเชิงพื้นที่ (คลิกเพื่อเจาะลึก)</h2>
+ <div class="crumb" id="crumb"></div>
+ <div class="heatwrap" id="heat"></div>
+ <div class="heatlegend"><span>คะแนนเฉลี่ยต่ำ</span><span class="sw" style="background:hsl(8,62%,62%)"></span><span class="sw" style="background:hsl(45,70%,58%)"></span><span class="sw" style="background:hsl(90,55%,52%)"></span><span class="sw" style="background:hsl(130,50%,45%)"></span><span>สูง · ขนาดตัวเลข = คะแนนเฉลี่ย, ใต้ตัวเลข = จำนวนที่ทดสอบ</span></div>
+</div>
 
 <div class="grid2">
  <div class="card"><h2>เปรียบเทียบคะแนนเฉลี่ย</h2>
@@ -160,8 +178,42 @@ function render(){
   ['ระดับเฉลี่ย',avgLv?avgLv.r:'—',avgLv?avgLv.n:'ยังไม่มีผล'],
   ['โรงเรียน',uniq(list.map(s=>s.school)).length,'แห่ง'],
  ].map(k=>`<div class="kpi"><div class="l">${k[0]}</div><div class="n">${k[1]}</div><div class="s">${k[2]}</div></div>`).join('');
- drawCompare(list);drawLevel(tested);drawDomain(tested);drawTable(list);
+ drawCompare(list);drawLevel(tested);drawDomain(tested);drawTable(list);drawHeat();
 }
+
+const HLEVELS=[['province','จังหวัด'],['amphoe','อำเภอ'],['tambon','ตำบล'],['school','โรงเรียน'],['cls','ชั้น']];
+function idOf(k){return k==='cls'?'f_class':'f_'+k}
+function heatColor(avg){if(avg==null)return null;const hue=Math.max(0,Math.min(130,avg/100*130));return `hsl(${Math.round(hue)},${avg<55?64:54}%,${avg<55?60:50}%)`}
+function drawHeat(){
+ // breadcrumb of set geo filters in order
+ let cr=['<a onclick="heatReset()">ประเทศไทย</a>'];
+ for(const[k,lab]of HLEVELS){const v=val(idOf(k));if(v)cr.push('<span class="sep">›</span><a onclick="heatCrumb(\''+k+'\')">'+esc(v)+'</a>');}
+ document.getElementById('crumb').innerHTML=cr.join('');
+ // current tile level = first geo filter not set (in order)
+ let lvlKey=null,lvlLab='';
+ for(const[k,lab]of HLEVELS){if(!val(idOf(k))){lvlKey=k;lvlLab=lab;break;}}
+ const heat=document.getElementById('heat');
+ if(!lvlKey){heat.innerHTML='<div class="muted">เจาะลึกถึงระดับชั้นแล้ว — ดูรายชื่อนักเรียนด้านล่าง</div>';return;}
+ // base data respecting set filters above this level
+ const base=data.filter(s=>HLEVELS.every(([k])=>!val(idOf(k))||(s[k]||'')===val(idOf(k))));
+ const g={};
+ base.forEach(s=>{const key=s[lvlKey]||'(ไม่ระบุ)';const w=weighted(s.scores);(g[key]=g[key]||{all:0,t:0,sum:0}); g[key].all++; if(w!=null){g[key].t++;g[key].sum+=w;}});
+ let arr=Object.entries(g).map(([k,v])=>({k,all:v.all,t:v.t,avg:v.t?Math.round(v.sum/v.t*10)/10:null}));
+ arr.sort((a,b)=>(b.avg==null?-1:b.avg)-(a.avg==null?-1:a.avg));
+ heat.innerHTML='';
+ const head=document.createElement('div');head.className='muted';head.style.cssText='flex-basis:100%;margin-bottom:-2px';head.textContent='แสดงตาม'+lvlLab+' ('+arr.length+' รายการ) — คลิกเพื่อเจาะลึก';
+ heat.appendChild(head);
+ arr.forEach(a=>{const col=heatColor(a.avg);const d=document.createElement('div');
+  d.className='tile'+(a.avg==null?' gray':'');if(col)d.style.background=col;
+  d.innerHTML=`<div class="nm">${esc(a.k)}</div><div class="av">${a.avg==null?'—':a.avg}</div><div class="ct">ทดสอบ ${a.t}/${a.all} คน</div>`;
+  d.onclick=()=>heatDrill(lvlKey,a.k);heat.appendChild(d);});
+}
+function heatDrill(k,name){if(name==='(ไม่ระบุ)')return;document.getElementById(idOf(k)).value=name;
+ if(k==='cls')render();else onFilter();}
+function heatCrumb(k){ // clicking a crumb keeps up to k, clears deeper
+ let clear=false;for(const[kk]of HLEVELS){if(clear)document.getElementById(idOf(kk)).value='';if(kk===k)clear=true;}
+ onFilter();}
+function heatReset(){resetFilters();}
 
 function drawCompare(list){
  const gk=val('groupby');const groups={};
