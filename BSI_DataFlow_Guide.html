@@ -1,0 +1,77 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>คู่มือเชื่อมข้อมูลกลาง · BrightStar Assessment Institute</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--berry:#9C7B3F;--gold:#C9A961;--deep:#5C3A22;--ink:#241B12;--paper:#F6F1E6;--cream:#FBF7EE;--grey:#6E6353;--line:#EADFCB;--green:#2E7D32}
+*{box-sizing:border-box}body{margin:0;font-family:"Sarabun",sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+.bar{background:#241B12;color:#FBF7EE;font-size:13px;padding:8px 16px;display:flex;gap:16px;align-items:center;border-bottom:2px solid #C9A961;flex-wrap:wrap}
+.bar a{color:#FBF7EE;text-decoration:none}.bar a.h{color:#C9A961;font-weight:700}
+.hero{background:linear-gradient(160deg,#5C3A22,#9C7B3F 130%);color:#fff;text-align:center;padding:30px 18px 24px;border-bottom:3px solid var(--gold)}
+.hero img{width:66px;background:#FFFDF7;border-radius:12px;padding:6px}
+.hero .k{letter-spacing:4px;font-size:11px;font-weight:700;color:#ffe9b0;margin-top:6px}
+.hero h1{font-family:"Cormorant Garamond",serif;font-size:30px;margin:4px 0 0}
+.hero p{font-size:14px;color:#f3e7cd;margin:3px 0 0}
+.wrap{max-width:840px;margin:0 auto;padding:24px 16px 90px}
+h2{font-family:"Cormorant Garamond",serif;color:var(--berry);font-size:22px;margin:26px 0 12px;border-left:5px solid var(--gold);padding-left:12px}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;justify-content:center;margin:8px 0}
+.node{flex:1;min-width:130px;background:#fff;border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:12px;padding:12px;text-align:center;font-size:13.5px}
+.node b{display:block;color:var(--deep);font-size:14.5px;margin-bottom:3px}
+.arrow{display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--berry);font-weight:700}
+.step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px 14px 54px;position:relative;margin:10px 0}
+.step .nx{position:absolute;left:14px;top:14px;width:28px;height:28px;border-radius:50%;background:var(--deep);color:var(--gold);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
+.step b{color:var(--deep)}
+.note{background:var(--paper);border-left:4px solid var(--gold);border-radius:8px;padding:11px 14px;font-size:13.5px;color:var(--ink);margin:12px 0}
+code{background:#efe7d4;padding:1px 6px;border-radius:5px;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left}th{background:var(--deep);color:#fff}
+#bsiHome{position:fixed;left:16px;bottom:16px;z-index:99999;background:#5C3A22;color:#FBF7EE;text-decoration:none;font-weight:700;font-size:14px;padding:10px 16px;border-radius:30px;box-shadow:0 4px 14px rgba(0,0,0,.28);border:1.5px solid #C9A961}
+footer{text-align:center;color:var(--grey);font-size:12px;margin-top:26px;border-top:1px solid var(--line);padding-top:14px}
+@media print{#bsiHome{display:none!important}}
+</style></head><body>
+<div class="bar"><a class="h" href="index.html">★ BrightStar</a><a href="index.html">หน้าแรก</a><a href="BSI_Staff_Console.html">ระบบครู</a><a href="https://www.appsheet.com/start/055c592c-257a-49ff-9d2f-108e6d416ebf" target="_blank" rel="noopener">ระบบกลาง</a></div>
+<div class="hero"><img src="logo.png" alt="logo"><div class="k">BRIGHTSTAR ASSESSMENT INSTITUTE</div>
+  <h1>คู่มือเชื่อมข้อมูลกลาง (Data Flow)</h1><p>ทำให้ข้อมูลเดินเป็นวงเดียว: ครูกรอก → ฐานข้อมูลกลาง → แดชบอร์ด/รายงานผู้ปกครอง</p></div>
+<div class="wrap">
+
+  <h2>ภาพรวมการไหลของข้อมูล</h2>
+  <div class="flow">
+    <div class="node"><b>① ระบบครู</b>ลงทะเบียน + กรอกคะแนน (เว็บ)</div>
+    <div class="arrow">→</div>
+    <div class="node"><b>② CSV / JSON</b>ส่งออกจากหน้าครู</div>
+    <div class="arrow">→</div>
+    <div class="node"><b>③ Google Sheet</b>ฐานข้อมูลกลาง</div>
+    <div class="arrow">→</div>
+    <div class="node"><b>④ AppSheet</b>คิดระดับ + บทบาทผู้ใช้</div>
+    <div class="arrow">→</div>
+    <div class="node"><b>⑤ ผลลัพธ์</b>แดชบอร์ด + รายงาน + เกียรติบัตร</div>
+  </div>
+  <div class="note">หัวใจคือ <b>Google Sheet เป็นแหล่งข้อมูลเดียว (single source of truth)</b> — AppSheet อ่านจากชีตนี้ และคิด “คะแนนรวม/ระดับดาว” ให้อัตโนมัติ ส่วนเว็บหน้าครูใช้กรอกเร็วหน้างานแล้วส่งออกมาเข้าชีต</div>
+
+  <h2>ขั้นตอนนำข้อมูลจากหน้าครู → ฐานกลาง</h2>
+  <div class="step"><div class="nx">1</div>ที่ <b>หน้าระบบครู</b> กรอกนักเรียน + คะแนน 5 ด้าน แล้วกด <b>“📊 ส่งออก CSV (Google Sheet/AppSheet)”</b> — ได้ไฟล์ <code>bsi_students_for_sheet.csv</code></div>
+  <div class="step"><div class="nx">2</div>เปิด <b>Google Sheet กลาง</b> (ชีต Students/Scores ที่ผูกกับ AppSheet) → เมนู <b>ไฟล์ ▸ นำเข้า (Import)</b> → อัปโหลด CSV → เลือก <b>“ผนวกข้อมูลต่อท้ายชีตปัจจุบัน (Append)”</b></div>
+  <div class="step"><div class="nx">3</div>ตรวจให้ <b>หัวคอลัมน์ตรงกัน</b> (ดูตารางด้านล่าง) — รหัสนักเรียนใช้กันซ้ำ/อ้างอิงระหว่างตาราง</div>
+  <div class="step"><div class="nx">4</div><b>AppSheet ซิงก์อัตโนมัติ</b> เมื่อเปิดแอป (หรือกดปุ่ม Sync) — ระบบจะคำนวณ “คะแนนรวม” และ “ระดับดาว” ให้เองตามสูตรที่ตั้งไว้</div>
+  <div class="step"><div class="nx">5</div>ดูผลได้ที่ <b>แดชบอร์ดผู้บริหาร</b> (รายคน/ชั้น/โรงเรียน/พื้นที่) และส่ง <b>ลิงก์รายงาน/เกียรติบัตร</b> ให้ผู้ปกครอง</div>
+
+  <h2>คอลัมน์ใน CSV (ให้ตรงกับชีตกลาง)</h2>
+  <table><tr><th>คอลัมน์ CSV</th><th>ใช้ที่ตาราง</th></tr>
+  <tr><td>รหัสนักเรียน, ชื่อ-สกุล, โรงเรียน, ระดับชั้น, ตำบล, อำเภอ, จังหวัด, ผู้ปกครอง, ติดต่อ</td><td>Students</td></tr>
+  <tr><td>ไทย, อังกฤษ, คณิต, EF, กล้ามเนื้อ, วันที่ประเมิน, คะแนนรวม, ระดับ</td><td>Scores</td></tr></table>
+  <div class="note">เคล็ดลับ: ครั้งแรกให้สร้างหัวคอลัมน์ในชีตให้ตรงชื่อนี้ก่อน แล้วนำเข้าแบบ Append ครั้งต่อ ๆ ไปจะรวมข้อมูลได้ทันที · ถ้าใช้หลายเครื่อง ให้แต่ละเครื่อง “ส่งออก CSV” แล้วนำเข้าเข้าชีตกลางเดียวกัน</div>
+
+  <h2>วิธีพกพา/รวมข้อมูลข้ามเครื่อง (กรณียังไม่เข้าชีต)</h2>
+  <div class="step"><div class="nx">A</div>เครื่องที่กรอก: กด <b>“💾 สำรองข้อมูล (.json)”</b> ได้ไฟล์ <code>bsi_students_backup.json</code></div>
+  <div class="step"><div class="nx">B</div>อีกเครื่อง/หน้าผู้บริหาร: กด <b>“📂 นำเข้าข้อมูล”</b> เลือกไฟล์ .json — ระบบรวมรายการที่ยังไม่มี (กันซ้ำด้วยรหัสนักเรียน)</div>
+
+  <h2>บทบาทผู้ใช้ (ใน AppSheet)</h2>
+  <table><tr><th>บทบาท</th><th>เห็น/ทำอะไรได้</th></tr>
+  <tr><td>เจ้าหน้าที่/ครู</td><td>ลงทะเบียน + กรอกคะแนนของโรงเรียน/รอบที่รับผิดชอบ</td></tr>
+  <tr><td>ผู้บริหารสถาบัน</td><td>เห็นภาพรวมทุกโรงเรียน/พื้นที่ เปรียบเทียบได้</td></tr>
+  <tr><td>ผู้ปกครอง</td><td>เห็นเฉพาะผลของบุตรหลานตนเอง (ผ่านลิงก์/ล็อกอิน)</td></tr></table>
+  <div class="note">⚠️ ความเป็นส่วนตัวเด็ก: เปิด “Require sign-in” และตั้ง Security Filter ให้ผู้ใช้เห็นเฉพาะข้อมูลในสิทธิ์ของตน + ขอความยินยอมผู้ปกครองตอนสมัคร (ดูแบบฟอร์มในชุดเอกสารปฏิบัติการ)</div>
+
+  <footer>BrightStar Assessment Institute · คู่มือเชื่อมข้อมูลกลาง · เว็บ → CSV → Google Sheet → AppSheet → แดชบอร์ด/รายงาน</footer>
+</div>
+<a id="bsiHome" href="index.html">← หน้าแรก</a>
+</body></html>
