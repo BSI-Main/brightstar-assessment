@@ -115,8 +115,10 @@ footer{text-align:center;color:var(--grey);font-size:12px;margin-top:30px;border
 
 <script>
 /* ===== ปรับค่าตรงนี้ให้เป็นของสถาบัน ===== */
-var PROMPTPAY_ID = "0812345678";      // เบอร์พร้อมเพย์ หรือเลขบัตร 13 หลักของสถาบัน
-var LINE_OA_URL  = "https://line.me/R/ti/p/@brightstar"; // ลิงก์ LINE OA จริง
+var PROMPTPAY_ID = "";              // (ทางเลือก) เบอร์มือถือ/เลขผู้เสียภาษี 13 หลักที่ผูกพร้อมเพย์ → สร้าง QR พร้อมยอดอัตโนมัติ
+var QR_IMAGE     = "promptpay_qr.png"; // หรือวางไฟล์ภาพ QR พร้อมเพย์ไว้ชื่อนี้ (สแกนแล้วกรอกยอดเอง)
+var BANK = {bank:"กรุงไทย (Krungthai)", acc:"017-0-39652-5", name:"โรงเรียนเสริมทักษะ ลิตเติ้ล เบรน", branch:"เซ็นทรัลพลาซา นครราชสีมา"};
+var LINE_OA_URL  = "https://line.me/R/ti/p/@brightstar"; // << แก้เป็นลิงก์ LINE OA จริงของสถาบัน
 /* ======================================== */
 
 var ROUNDS = [
@@ -186,8 +188,13 @@ function submitForm(){
   var msg=lines.join('\n');
   var pay='';
   if(who==='parent' && amount){
-    pay='<div class="paybox"><div id="qr"></div><div class="payinfo"><b>ชำระผ่าน PromptPay</b><br>สแกน QR นี้ด้วยแอปธนาคาร ยอด <b>'+(+amount).toLocaleString()+' ฿</b><br><span style="color:var(--grey)">บัญชีสถาบัน (พร้อมเพย์): '+esc(PROMPTPAY_ID)+'</span></div></div>'
-      +'<div class="note">หลังโอนแล้ว แนบสลิป + แจ้ง<b> รหัส '+code+' </b>ทาง LINE เพื่อยืนยันที่นั่งรอบสอบ</div>';
+    var amt=(+amount).toLocaleString(), qrHtml='';
+    if(PROMPTPAY_ID){ qrHtml='<div id="ppqr" style="margin:0 auto;width:200px"></div><div style="font-size:13px;color:var(--grey);margin-top:6px">สแกนจ่ายยอด <b>'+amt+' ฿</b> อัตโนมัติ</div>'; }
+    else if(QR_IMAGE){ qrHtml='<img src="'+QR_IMAGE+'" onerror="this.parentNode.style.display=\'none\'" alt="PromptPay QR" style="width:200px;max-width:62vw;border:1px solid var(--line);border-radius:10px"><div style="font-size:13px;color:var(--grey);margin-top:6px">สแกน PromptPay แล้วกรอกยอด <b>'+amt+' ฿</b></div>'; }
+    pay='<div class="paybox">'+(qrHtml?'<div style="text-align:center">'+qrHtml+'</div>':'')
+      +'<div class="payinfo"><b>ชำระเงิน · ยอด <span style="color:var(--berry);font-size:18px">'+amt+' ฿</span></b>'
+      +'<div style="margin-top:8px;font-size:14.5px;line-height:1.9">หรือโอนเข้าบัญชี<br>ธนาคาร: <b>'+BANK.bank+'</b><br>เลขที่บัญชี: <b style="letter-spacing:1px;color:var(--deep)">'+BANK.acc+'</b><br>ชื่อบัญชี: <b>'+esc(BANK.name)+'</b><br>สาขา: '+esc(BANK.branch)+'</div></div></div>'
+      +'<div class="note">โอนแล้วแนบสลิป + แจ้ง<b> รหัส '+code+' </b>ทาง LINE เพื่อยืนยันที่นั่งรอบสอบ</div>';
   } else {
     pay='<div class="note">ทีมงานจะติดต่อกลับเพื่อยืนยันราคาและรอบสอบ พร้อมส่งใบเสนอราคา/ใบแจ้งชำระให้ — อ้างอิง<b> รหัส '+code+'</b></div>';
   }
@@ -198,7 +205,8 @@ function submitForm(){
     +'<button class="btn alt" onclick="copyMsg(this)" data-msg="'+esc(msg).replace(/"/g,"&quot;")+'">คัดลอกข้อมูลการสมัคร</button>'
     +'<button class="btn alt" onclick="window.print()">พิมพ์/บันทึก</button></div></div>';
   var res=document.getElementById('result'); res.innerHTML=html; res.scrollIntoView({behavior:'smooth'});
-  if(who==='parent' && amount){ new QRCode(document.getElementById('qr'),{text:ppPayload(PROMPTPAY_ID,amount),width:190,height:190,correctLevel:QRCode.CorrectLevel.M}); }
+  if(who==='parent' && amount && PROMPTPAY_ID){ try{ new QRCode(document.getElementById('ppqr'),{text:ppPayload(PROMPTPAY_ID,amount),width:200,height:200,correctLevel:QRCode.CorrectLevel.M}); }catch(e){} }
+
 }
 function copyMsg(b){var t=b.getAttribute('data-msg').replace(/&quot;/g,'"').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');navigator.clipboard.writeText(t).then(function(){b.textContent='คัดลอกแล้ว ✓';});}
 </script>
