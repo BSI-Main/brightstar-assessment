@@ -1,0 +1,86 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ศูนย์ข้อความสื่อสาร · BrightStar Assessment Institute</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--berry:#9C7B3F;--gold:#C9A961;--deep:#5C3A22;--ink:#241B12;--paper:#F6F1E6;--cream:#FBF7EE;--grey:#6E6353;--line:#EADFCB}
+*{box-sizing:border-box}body{margin:0;font-family:"Sarabun",sans-serif;color:var(--ink);background:var(--cream);line-height:1.55}
+.bar{background:#241B12;color:#FBF7EE;font-size:13px;padding:8px 16px;display:flex;gap:16px;align-items:center;border-bottom:2px solid #C9A961;flex-wrap:wrap}
+.bar a{color:#FBF7EE;text-decoration:none}.bar a.h{color:#C9A961;font-weight:700}
+.hero{background:linear-gradient(160deg,#5C3A22,#9C7B3F 130%);color:#fff;text-align:center;padding:30px 18px 24px;border-bottom:3px solid var(--gold)}
+.hero img{width:66px;background:#FFFDF7;border-radius:12px;padding:6px}
+.hero .k{letter-spacing:4px;font-size:11px;font-weight:700;color:#ffe9b0;margin-top:6px}
+.hero h1{font-family:"Cormorant Garamond",serif;font-size:30px;margin:4px 0 0}
+.hero p{font-size:14px;color:#f3e7cd;margin:3px 0 0}
+.wrap{max-width:860px;margin:0 auto;padding:22px 16px 90px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:18px}
+.panel h2{font-family:"Cormorant Garamond",serif;color:var(--berry);font-size:21px;margin:0 0 12px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.fld{flex:1;min-width:150px;display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+label{font-size:13px;font-weight:600;color:var(--ink)}
+input{padding:9px;border:1px solid var(--line);border-radius:8px;font-size:14.5px;font-family:inherit}
+.tpl{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:12px;padding:16px;margin-bottom:14px}
+.tpl .th{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.tpl .nm{font-weight:700;color:var(--deep);font-size:16px}
+.tpl pre{white-space:pre-wrap;font-family:inherit;font-size:14px;background:var(--paper);border-radius:8px;padding:12px 14px;margin:0;color:var(--ink)}
+.copy{background:var(--berry);color:#fff;border:0;border-radius:20px;padding:8px 16px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+.copy:hover{background:var(--deep)}
+.hint{font-size:12.5px;color:var(--grey);margin-top:4px}
+#bsiHome{position:fixed;left:16px;bottom:16px;z-index:99999;background:#5C3A22;color:#FBF7EE;text-decoration:none;font-weight:700;font-size:14px;padding:10px 16px;border-radius:30px;box-shadow:0 4px 14px rgba(0,0,0,.28);border:1.5px solid #C9A961}
+footer{text-align:center;color:var(--grey);font-size:12px;margin-top:24px;border-top:1px solid var(--line);padding-top:14px}
+@media print{#bsiHome{display:none!important}}
+</style></head><body>
+<div class="bar"><a class="h" href="index.html">★ BrightStar</a><a href="index.html">หน้าแรก</a><a href="BSI_Register.html">สมัครสอบ</a><a href="BSI_Staff_Console.html">ระบบครู</a></div>
+<div class="hero"><img src="logo.png" alt="logo"><div class="k">BRIGHTSTAR ASSESSMENT INSTITUTE</div>
+  <h1>ศูนย์ข้อความสื่อสาร</h1><p>กรอกข้อมูลครั้งเดียว → ได้ข้อความ LINE/อีเมล พร้อมส่งทุกขั้นตอน · กดคัดลอกได้เลย</p></div>
+<div class="wrap">
+  <div class="panel"><h2>กรอกข้อมูล (ใช้ร่วมทุกข้อความ)</h2>
+    <div class="row">
+      <div class="fld"><label>ชื่อผู้ปกครอง/ผู้ติดต่อ</label><input id="f_contact" oninput="render()" placeholder="คุณ..."></div>
+      <div class="fld"><label>ชื่อบุตรหลาน</label><input id="f_child" oninput="render()" placeholder="ด.ญ./ด.ช. ..."></div>
+      <div class="fld"><label>รหัสการสมัคร</label><input id="f_code" oninput="render()" placeholder="BSI-2569-XXXX"></div>
+    </div>
+    <div class="row">
+      <div class="fld"><label>แพ็กเกจ</label><input id="f_pkg" oninput="render()" placeholder="มาตรฐาน (เดี่ยว)"></div>
+      <div class="fld"><label>ยอดชำระ (บาท)</label><input id="f_amt" oninput="render()" placeholder="690"></div>
+      <div class="fld"><label>รอบสอบ</label><input id="f_round" oninput="render()" placeholder="26 ก.ค. 2569 · สนามกลางโคราช"></div>
+    </div>
+    <div class="row">
+      <div class="fld"><label>ระดับผล (ถ้ามี)</label><input id="f_level" oninput="render()" placeholder="IV · ดาวเด่น"></div>
+      <div class="fld"><label>ลิงก์รายงานผล (ถ้ามี)</label><input id="f_link" oninput="render()" placeholder="วางลิงก์รายงานเฉพาะบุคคล"></div>
+      <div class="fld"><label>รอบถัดไป (เตือนวัดซ้ำ)</label><input id="f_next" oninput="render()" placeholder="ภาคเรียนหน้า / 23 ส.ค. 2569"></div>
+    </div>
+  </div>
+  <div id="tpls"></div>
+  <footer>BrightStar Assessment Institute · ศูนย์ข้อความสำหรับเจ้าหน้าที่ · ข้อความปรับแก้ก่อนส่งได้ตามเหมาะสม</footer>
+</div>
+<a id="bsiHome" href="index.html">← หน้าแรก</a>
+<script>
+function v(id,d){var x=document.getElementById(id).value.trim();return x||d;}
+function TPLS(){
+ var contact=v('f_contact','ผู้ปกครอง'),child=v('f_child','น้อง'),code=v('f_code','-'),pkg=v('f_pkg','-'),
+     amt=v('f_amt','-'),round=v('f_round','(รอยืนยัน)'),level=v('f_level','-'),link=v('f_link','(ลิงก์รายงาน)'),next=v('f_next','รอบถัดไป');
+ return [
+  ["1 · ยืนยันรับสมัคร (รอชำระเงิน)",
+   "สวัสดีค่ะคุณ"+contact+" 🙏\nBrightStar Assessment Institute ได้รับใบสมัครของ "+child+" เรียบร้อยแล้วค่ะ\n• รหัสการสมัคร: "+code+"\n• แพ็กเกจ: "+pkg+"\n• ยอดชำระ: "+amt+" บาท\n• รอบสอบที่เลือก: "+round+"\n\nกรุณาโอนเงินเข้าบัญชี ธ.กรุงไทย 017-0-39652-5 (โรงเรียนเสริมทักษะ ลิตเติ้ล เบรน) แล้วแนบสลิปพร้อมแจ้งรหัส "+code+" กลับมาทางนี้ เพื่อยืนยันที่นั่งค่ะ"],
+  ["2 · ยืนยันรับชำระเงิน + ที่นั่งรอบสอบ",
+   "ขอบคุณค่ะคุณ"+contact+" ✅\nได้รับชำระเงินสำหรับ "+child+" (รหัส "+code+") เรียบร้อยแล้ว\n• ยอด: "+amt+" บาท\n• รอบสอบ: "+round+"\n\nยืนยันที่นั่งเรียบร้อยค่ะ กรุณาพา "+child+" มาก่อนเวลาสอบ 20 นาที พร้อมบัตรประจำตัว/ใบนัด ทางสถาบันจะส่งรายละเอียดสถานที่และสิ่งที่ต้องเตรียมอีกครั้งก่อนวันสอบค่ะ 🌟"],
+  ["3 · แจ้งผลพร้อมลิงก์รายงาน",
+   "เรียนคุณ"+contact+" 🎉\nผลการประเมินสมรรถนะของ "+child+" พร้อมแล้วค่ะ\n• ระดับที่ได้รับ: "+level+"\n• ดูรายงานฉบับเต็ม + เกียรติบัตร: "+link+"\n\nรายงานมีคะแนน 5 ด้าน จุดเด่น จุดที่ควรส่งเสริม และคำแนะนำกิจกรรมที่บ้านค่ะ หากมีข้อสงสัยเรื่องผล ทักมาปรึกษาได้เสมอนะคะ"],
+  ["4 · เตือนวัดซ้ำรอบถัดไป (ติดตามพัฒนาการ)",
+   "สวัสดีค่ะคุณ"+contact+" 🌱\nการวัดซ้ำจะช่วยให้เห็นพัฒนาการของ "+child+" ชัดเจนขึ้นค่ะ สถาบันเปิดรอบประเมิน "+next+"\nหากสนใจให้ "+child+" วัดซ้ำเพื่อเทียบพัฒนาการ แจ้งกลับมาได้เลยนะคะ มีส่วนลดสำหรับน้องที่เคยประเมินกับเราค่ะ 💛"],
+  ["5 · ตอบโรงเรียน (สอบถามจัดสอบหมู่คณะ)",
+   "เรียน ผู้บริหารโรงเรียน 🏫\nขอบคุณที่สนใจให้ BrightStar Assessment Institute ประเมินสมรรถนะปฐมวัยให้นักเรียนค่ะ\nแพ็กเกจโรงเรียนมี 3 ระดับ (Lite/Standard/Premium) ราคาขั้นบันได 290–790 บาท/คน ตามจำนวน พร้อม:\n• รายงานวินิจฉัยรายบุคคล + เกียรติบัตร\n• แดชบอร์ดเปรียบเทียบรายชั้น/โรงเรียน\n• รับรองวิชาการโดยมหาวิทยาลัยวงษ์ชวลิตกุล\nรบกวนแจ้งจำนวนนักเรียนโดยประมาณและระดับชั้น ทางสถาบันจะจัดทำใบเสนอราคาและนัดสาธิตระบบให้ค่ะ ยินดีให้ทดลองวัดฟรี 1 ห้องเรียนก่อนตัดสินใจค่ะ"]
+ ];
+}
+function render(){
+ var t=TPLS(), h='';
+ for(var i=0;i<t.length;i++){
+  h+='<div class="tpl"><div class="th"><div class="nm">'+t[i][0]+'</div><button class="copy" onclick="cp(this)">คัดลอก</button></div><pre>'+esc(t[i][1])+'</pre></div>';
+ }
+ document.getElementById('tpls').innerHTML=h;
+}
+function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function cp(b){var pre=b.parentNode.parentNode.querySelector('pre');var t=pre.innerText;navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent='คัดลอกแล้ว ✓';setTimeout(function(){b.textContent=o;},1500);});}
+render();
+</script>
+</body></html>
