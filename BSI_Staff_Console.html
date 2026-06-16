@@ -206,7 +206,7 @@ function parentLink(id){
  if(w==null){toast('ยังไม่มีผลทดสอบ — กรอกคะแนนก่อน');return}
  const payload={n:s.name,c:s.cls,id:s.id,sch:s.school||'',ar:areaStr(s),dt:s.date,s:s.scores,w,lv};
  const code=encodeURIComponent(btoa(unescape(encodeURIComponent(JSON.stringify(payload)))));
- const url=location.href.replace(/BSI_Staff_Console\.html.*$/,'')+'BSI_Parent_View.html#d='+code;
+ const url='https://thanwaphisit-tao.github.io/brightstar-portal/parent.html#d='+code;
  lastQrUrl=url;
  document.getElementById('qr_who').textContent=s.name+' · '+s.cls+' ('+s.id+')';
  document.getElementById('qr_url').value=url;
