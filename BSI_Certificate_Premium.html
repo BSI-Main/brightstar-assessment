@@ -127,4 +127,19 @@ body{font-family:'Sarabun','TH Sarabun New',sans-serif;color:var(--ink);backgrou
   </div>
 </div>
 <style>#bsiHome{position:fixed;left:16px;bottom:16px;z-index:99999;background:#5C3A22;color:#FBF7EE;text-decoration:none;font-family:"Sarabun",sans-serif;font-weight:700;font-size:14px;padding:10px 16px;border-radius:30px;box-shadow:0 4px 14px rgba(0,0,0,.28);border:1.5px solid #C9A961}#bsiHome:hover{background:#9C7B3F}@media print{#bsiHome{display:none!important}}</style><a id="bsiHome" href="index.html">← หน้าแรก</a><script>window.addEventListener("load",function(){try{new QRCode(document.getElementById("vqr"),{text:"https://bsi-main.github.io/brightstar-assessment/BSI_Verify.html?c=BSI-2569-0001",width:92,height:92,correctLevel:QRCode.CorrectLevel.M});}catch(e){}});</script>
+<style>#bsiShare{position:fixed;right:14px;bottom:14px;z-index:99999;display:flex;gap:8px;background:rgba(36,27,18,.92);padding:8px 10px;border-radius:30px;border:1.5px solid #C9A961;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#bsiShare button{border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:12.5px;border-radius:20px;padding:7px 12px}
+#bsiShare .l{background:#06C755;color:#fff}#bsiShare .f{background:#1877F2;color:#fff}#bsiShare .c{background:#C9A961;color:#241B12}#bsiShare .p{background:#FBF7EE;color:#5C3A22}
+@media print{#bsiShare{display:none!important}}</style>
+<div id="bsiShare">
+ <button class="l" onclick="bsiSh('line')">LINE</button>
+ <button class="f" onclick="bsiSh('fb')">Facebook</button>
+ <button class="c" onclick="bsiSh('copy')">คัดลอกลิงก์</button>
+ <button class="p" onclick="window.print()">บันทึก/พิมพ์</button>
+</div>
+<script>function bsiSh(t){var u=encodeURIComponent(location.href);
+ if(t==='line')window.open('https://social-plugins.line.me/lineit/share?url='+u,'_blank');
+ else if(t==='fb')window.open('https://www.facebook.com/sharer/sharer.php?u='+u,'_blank');
+ else if(t==='copy'){navigator.clipboard.writeText(location.href).then(function(){var b=document.querySelector('#bsiShare .c');var o=b.textContent;b.textContent='คัดลอกแล้ว ✓';setTimeout(function(){b.textContent=o;},1500);});}}
+</script>
 </body></html>
