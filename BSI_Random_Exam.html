@@ -75,6 +75,7 @@ const DATA=JSON.parse(document.getElementById('data').textContent);
 const LVNO={PK:'ระดับ 1',K1:'ระดับ 2',K2:'ระดับ 3',K3:'ระดับ 4'};
 const LVTH={PK:'ชั้นเตรียมอนุบาล',K1:'ชั้นอนุบาล 1',K2:'ชั้นอนุบาล 2',K3:'ชั้นอนุบาล 3'};
 const DOMS=['ภาษาไทย','ภาษาอังกฤษ','คณิต-ตรรกะ','EF / เชาวน์','กล้ามเนื้อ'];
+const DN={'ภาษาไทย':{code:'TH',full:'สมรรถนะภาษาไทยและการรู้หนังสือ'},'ภาษาอังกฤษ':{code:'EN',full:'สมรรถนะภาษาอังกฤษเพื่อการสื่อสาร'},'คณิต-ตรรกะ':{code:'MA',full:'สมรรถนะคณิตศาสตร์และการคิดเชิงตรรกะ'},'EF / เชาวน์':{code:'EF',full:'สมรรถนะการคิดเชิงบริหารและการแก้ปัญหา'},'กล้ามเนื้อ':{code:'MO',full:'สมรรถนะการเคลื่อนไหวและสุขภาวะทางกาย'}};
 const EMO={'ภาษาไทย':'🇹🇭','ภาษาอังกฤษ':'🔤','คณิต-ตรรกะ':'🔢','EF / เชาวน์':'🧠','กล้ามเนื้อ':'✋'};
 const STRAND={'ภาษาไทย':{P1:'ฟัง-พูด / ลงมือทำ',P2:'อ่าน-เขียน'},'ภาษาอังกฤษ':{P1:'Listening-Speaking / ลงมือทำ',P2:'Reading-Writing'},'คณิต-ตรรกะ':{P1:'จำนวน-ปฏิบัติการ / ลงมือทำ',P2:'เขียน-คิดเชิงตรรกะ'},'EF / เชาวน์':{P1:'ควบคุมตน/ความจำ / ลงมือทำ',P2:'เชาวน์-เขียน'},'กล้ามเนื้อ':{P1:'มัดใหญ่ / ลงมือทำ',P2:'มัดเล็ก / เขียน-วาด-ตัด'}};
 const MODECOLOR={ORAL:'#3457B2',PERFORM:'#1A7F5A',WRITTEN:'#9C7B3F'};
@@ -131,7 +132,7 @@ function render(){
  // group dom -> strand
  let h=''; let curDom=null,curSt=null;
  cs.forEach(c=>{const v=DATA[c];
-  if(v.dom!==curDom){curDom=v.dom;curSt=null;h+=`<div class="domhd">${EMO[v.dom]} ${esc(v.dom)}</div>`;}
+  if(v.dom!==curDom){curDom=v.dom;curSt=null;h+=`<div class="domhd">${EMO[v.dom]} ${DN[v.dom].full} (${DN[v.dom].code})</div>`;}
   if(v.strand!==curSt){curSt=v.strand;h+=`<div class="sthd">ส่วนที่ ${curSt.slice(-1)} · ${STRAND[v.dom][curSt]}</div>`;}
   if(c===cs.find(x=>DATA[x].dom===v.dom&&DATA[x].strand===v.strand)) h+='<div class="grid" style="margin-bottom:10px">';
   h+=card(c);
@@ -145,7 +146,7 @@ function render(){
 (function(){
  const lvSel=document.getElementById('lv'); ['PK','K1','K2','K3'].forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=LVNO[k]+' — '+LVTH[k];lvSel.appendChild(o);});
  const dmSel=document.getElementById('dom'); const oa=document.createElement('option');oa.value='ALL';oa.textContent='ครบ 5 ด้าน (ชุดเต็ม)';dmSel.appendChild(oa);
- DOMS.forEach(d=>{const o=document.createElement('option');o.value=d;o.textContent=EMO[d]+' '+d;dmSel.appendChild(o);});
+ DOMS.forEach(d=>{const o=document.createElement('option');o.value=d;o.textContent=EMO[d]+' '+DN[d].code+' · '+d;dmSel.appendChild(o);});
  lvSel.onchange=()=>draw(false); dmSel.onchange=()=>draw(false);
  draw(false);
 })();
