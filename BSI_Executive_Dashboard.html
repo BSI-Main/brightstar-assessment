@@ -118,7 +118,7 @@ footer{text-align:center;color:var(--grey);font-size:12px;margin-top:22px;border
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 const W={th:20,en:20,ma:25,ef:20,mo:15};
-const NAMES={th:"ภาษาไทย",en:"อังกฤษ",ma:"คณิต-ตรรกะ",ef:"EF/เชาวน์",mo:"กล้ามเนื้อ"};
+const NAMES={th:"ภาษาไทย (TH)",en:"อังกฤษ",ma:"คณิต-ตรรกะ (MA)",ef:"EF/เชาวน์",mo:"กล้ามเนื้อ (MO)"};
 const KEY="bsi_students_v1";
 let data=loadLocal(), sortKey='w', sortDir=-1, charts={};
 function loadLocal(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}

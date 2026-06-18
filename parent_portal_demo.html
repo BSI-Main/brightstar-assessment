@@ -106,13 +106,13 @@ a.back{margin-left:auto;color:var(--berry);font-size:13px;cursor:pointer;text-de
 const ACC={parent1:{pw:"1234",i:0},parent2:{pw:"1234",i:1}};
 const kids=[
  {name:"ด.ญ. กานต์ธิดา ศรีสุข",nick:"ใบเฟิร์น",cls:"อนุบาล 3",id:"LB-69-001",exm:"ครูสมศรี",term:"1/2569",date:"1 มิ.ย. 2569",init:"ก",
-  s:{"ภาษาไทย":85,"ภาษาอังกฤษ":78,"คณิต-ตรรกะ":92,"EF/IQ":88,"กล้ามเนื้อ":75}},
+  s:{"ภาษาไทย (TH)":85,"ภาษาอังกฤษ (EN)":78,"คณิต-ตรรกะ (MA)":92,"EF/IQ":88,"กล้ามเนื้อ (MO)":75}},
  {name:"ด.ช. ภูริภัทร ตั้งใจ",nick:"ภูมิ",cls:"อนุบาล 3",id:"LB-69-008",exm:"ครูสมชาย",term:"1/2569",date:"2 มิ.ย. 2569",init:"ภ",
-  s:{"ภาษาไทย":45,"ภาษาอังกฤษ":40,"คณิต-ตรรกะ":48,"EF/IQ":42,"กล้ามเนื้อ":55}}
+  s:{"ภาษาไทย (TH)":45,"ภาษาอังกฤษ (EN)":40,"คณิต-ตรรกะ (MA)":48,"EF/IQ":42,"กล้ามเนื้อ (MO)":55}}
 ];
-const W={"ภาษาไทย":20,"ภาษาอังกฤษ":20,"คณิต-ตรรกะ":25,"EF/IQ":20,"กล้ามเนื้อ":15};
+const W={"ภาษาไทย (TH)":20,"ภาษาอังกฤษ (EN)":20,"คณิต-ตรรกะ (MA)":25,"EF/IQ":20,"กล้ามเนื้อ (MO)":15};
 const LV=[[0,34,"ดาวน้อย","Little Star",1],[35,49,"ดาวเริ่มฉาย","Bright Star",2],[50,64,"ดาวสุกใส","Rising Star",3],[65,77,"ดาวเด่น","Shining Star",4],[78,87,"ดาวนำทาง","Brilliant Star",5],[88,95,"ดาวเจิดจรัส","Champion Star",6],[96,100,"ดาวมาสเตอร์","Master Star",7]];
-const SUG={"ภาษาไทย":"อ่านนิทานด้วยกันทุกวัน ชวนเล่าเรื่องและตั้งคำถาม","ภาษาอังกฤษ":"ดูสื่อภาษาอังกฤษสั้น ๆ ร้องเพลง ฝึกคำศัพท์ใกล้ตัว","คณิต-ตรรกะ":"เล่นนับสิ่งของ จับคู่ เปรียบเทียบ เล่นบอร์ดเกมง่าย ๆ","EF/IQ":"เล่นเกมรอคิว เก็บของตามขั้นตอน ต่อจิ๊กซอว์","กล้ามเนื้อ":"ปั้นดินน้ำมัน ตัดกระดาษ วิ่งเล่น ปีนป่ายอย่างปลอดภัย"};
+const SUG={"ภาษาไทย (TH)":"อ่านนิทานด้วยกันทุกวัน ชวนเล่าเรื่องและตั้งคำถาม","ภาษาอังกฤษ (EN)":"ดูสื่อภาษาอังกฤษสั้น ๆ ร้องเพลง ฝึกคำศัพท์ใกล้ตัว","คณิต-ตรรกะ (MA)":"เล่นนับสิ่งของ จับคู่ เปรียบเทียบ เล่นบอร์ดเกมง่าย ๆ","EF/IQ":"เล่นเกมรอคิว เก็บของตามขั้นตอน ต่อจิ๊กซอว์","กล้ามเนื้อ (MO)":"ปั้นดินน้ำมัน ตัดกระดาษ วิ่งเล่น ปีนป่ายอย่างปลอดภัย"};
 let cur=0;
 function wavg(s){let n=0,d=0;for(k in s){n+=s[k]*W[k];d+=W[k];}return Math.round(n/d*10)/10;}
 function lvl(a){for(const r of LV)if(a>=r[0]&&a<=r[1])return r;return LV[0];}
@@ -133,7 +133,7 @@ function render(){const k=kids[cur];document.getElementById('cname').textContent
  document.getElementById('radar').innerHTML=radar(k.s);
  const ent=Object.entries(k.s);let bars='',det='';
  for(const[d,v]of ent){const b=band(v);bars+=`<div class="bar"><div class="lab">${d}</div><div class="track"><div class="fill" style="width:${v}%;background:${b[1]}"></div></div><div class="v">${v}</div></div>`;
-  det+=`<div class="det"><div class="dh"><span>${d}</span><span class="sc">${v}/100 · ${b[0]}</span></div><div class="dx">คำแนะนำที่บ้าน: ${SUG[d]}</div>${d==="ภาษาอังกฤษ"?`<span class="cefr">${cefr(v)}</span>`:""}</div>`;}
+  det+=`<div class="det"><div class="dh"><span>${d}</span><span class="sc">${v}/100 · ${b[0]}</span></div><div class="dx">คำแนะนำที่บ้าน: ${SUG[d]}</div>${d==="ภาษาอังกฤษ (EN)"?`<span class="cefr">${cefr(v)}</span>`:""}</div>`;}
  document.getElementById('bars').innerHTML=bars;document.getElementById('details').innerHTML=det;
  const mx=ent.reduce((a,b)=>b[1]>a[1]?b:a),mn=ent.reduce((a,b)=>b[1]<a[1]?b:a);
  document.getElementById('strong').textContent=`${mx[0]} (${mx[1]}) — ${SUG[mx[0]]}`;

@@ -58,7 +58,7 @@ footer{text-align:center;color:var(--grey);font-size:12px;margin-top:24px;border
 <a id="bsiHome" href="index.html">← หน้าแรก</a>
 <script>
 var W={th:20,en:20,ma:25,ef:20,mo:15};
-var NM={th:["🇹🇭","ภาษาไทย"],en:["🔤","ภาษาอังกฤษ"],ma:["🔢","คณิต-ตรรกะ"],ef:["🧠","EF / เชาวน์"],mo:["✋","กล้ามเนื้อ"]};
+var NM={th:["🇹🇭","ภาษาไทย (TH)"],en:["🔤","ภาษาอังกฤษ (EN)"],ma:["🔢","คณิต-ตรรกะ (MA)"],ef:["🧠","EF / เชาวน์ (EF)"],mo:["✋","กล้ามเนื้อ (MO)"]};
 function lv(v){var L=[[96,'VII','ดาวมาสเตอร์'],[88,'VI','ดาวเจิดจรัส'],[78,'V','ดาวนำทาง'],[65,'IV','ดาวเด่น'],[50,'III','ดาวสุกใส'],[35,'II','ดาวเริ่มฉาย'],[0,'I','ดาวน้อย']];for(var i=0;i<L.length;i++){if(v>=L[i][0])return{r:L[i][1],n:L[i][2],i:7-i};}}
 function rnum(r){return {I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7}[r];}
 function weighted(s){var t=0,w=0;for(var k in W){t+=s[k]*W[k];w+=W[k];}return Math.round(t/w*10)/10;}

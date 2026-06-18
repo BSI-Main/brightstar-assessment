@@ -97,11 +97,11 @@ footer{text-align:center;color:var(--grey);font-size:12px;margin-top:24px;border
 <dialog id="dlg"><div class="dlg-h"><span id="dlg_title">กรอกคะแนน</span><span style="cursor:pointer" onclick="document.getElementById('dlg').close()">✕</span></div>
 <div class="dlg-b">
 <div class="muted" id="dlg_who" style="margin-bottom:8px"></div>
-<div class="score-row"><label>🇹🇭 ภาษาไทย</label><span class="w">น้ำหนัก 20</span><input type="number" min="0" max="100" id="s_th" oninput="calc()"></div>
-<div class="score-row"><label>🔤 ภาษาอังกฤษ</label><span class="w">น้ำหนัก 20</span><input type="number" min="0" max="100" id="s_en" oninput="calc()"></div>
-<div class="score-row"><label>🔢 คณิต-ตรรกะ</label><span class="w">น้ำหนัก 25</span><input type="number" min="0" max="100" id="s_ma" oninput="calc()"></div>
-<div class="score-row"><label>🧠 EF / เชาวน์</label><span class="w">น้ำหนัก 20</span><input type="number" min="0" max="100" id="s_ef" oninput="calc()"></div>
-<div class="score-row"><label>✋ กล้ามเนื้อ</label><span class="w">น้ำหนัก 15</span><input type="number" min="0" max="100" id="s_mo" oninput="calc()"></div>
+<div class="score-row"><label>🇹🇭 ภาษาไทย (TH)</label><span class="w">น้ำหนัก 20</span><input type="number" min="0" max="100" id="s_th" oninput="calc()"></div>
+<div class="score-row"><label>🔤 ภาษาอังกฤษ (EN)</label><span class="w">น้ำหนัก 20</span><input type="number" min="0" max="100" id="s_en" oninput="calc()"></div>
+<div class="score-row"><label>🔢 คณิต-ตรรกะ (MA)</label><span class="w">น้ำหนัก 25</span><input type="number" min="0" max="100" id="s_ma" oninput="calc()"></div>
+<div class="score-row"><label>🧠 EF / เชาวน์ (EF)</label><span class="w">น้ำหนัก 20</span><input type="number" min="0" max="100" id="s_ef" oninput="calc()"></div>
+<div class="score-row"><label>✋ กล้ามเนื้อ (MO)</label><span class="w">น้ำหนัก 15</span><input type="number" min="0" max="100" id="s_mo" oninput="calc()"></div>
 <div class="muted">เว้นว่างได้ถ้ายังไม่ได้สอบด้านนั้น — ระบบคิดเฉพาะด้านที่กรอก</div>
 <div class="bigscore"><div class="muted">คะแนนรวมถ่วงน้ำหนัก</div><div class="n" id="calc_score">—</div><div id="calc_level"></div></div>
 <div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end"><button class="btn green" onclick="saveScore()">บันทึกผล</button></div>
@@ -125,7 +125,7 @@ footer{text-align:center;color:var(--grey);font-size:12px;margin-top:24px;border
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 const W={th:20,en:20,ma:25,ef:20,mo:15};
-const NAMES={th:"ภาษาไทย",en:"อังกฤษ",ma:"คณิต-ตรรกะ",ef:"EF/เชาวน์",mo:"กล้ามเนื้อ"};
+const NAMES={th:"ภาษาไทย (TH)",en:"อังกฤษ",ma:"คณิต-ตรรกะ (MA)",ef:"EF/เชาวน์",mo:"กล้ามเนื้อ (MO)"};
 const KEY="bsi_students_v1";
 let students=load();
 let editId=null;
@@ -220,7 +220,7 @@ function downloadQr(){const cv=document.querySelector('#qrbox canvas');if(!cv){t
 function exportData(){const blob=new Blob([JSON.stringify(students,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='bsi_students_backup.json';a.click();toast('สำรองข้อมูล (.json) แล้ว')}
 function csvCell(v){v=(v==null?'':''+v);return '"'+v.replace(/"/g,'""')+'"';}
 function exportCSV(){
- const head=['รหัสนักเรียน','ชื่อ-สกุล','โรงเรียน','ระดับชั้น','ตำบล','อำเภอ','จังหวัด','ผู้ปกครอง','ติดต่อ','ไทย','อังกฤษ','คณิต','EF','กล้ามเนื้อ','วันที่ประเมิน','คะแนนรวม','ระดับ'];
+ const head=['รหัสนักเรียน','ชื่อ-สกุล','โรงเรียน','ระดับชั้น','ตำบล','อำเภอ','จังหวัด','ผู้ปกครอง','ติดต่อ','ไทย','อังกฤษ','คณิต','EF','กล้ามเนื้อ (MO)','วันที่ประเมิน','คะแนนรวม','ระดับ'];
  const rows=[head.map(csvCell).join(',')];
  students.forEach(s=>{const sc=s.scores||{},w=weighted(s.scores),lv=level(w);
   rows.push([s.id,s.name,s.school||'',s.cls||'',s.tambon||'',s.amphoe||'',s.province||'',s.parent||'',s.contact||'',
